@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HGVERH7T1"></script>
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<div class="mantra-strip">ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः</div>
+<div class="mantra-strip"><span>ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः</span><span class="est">सेवा · सत्य · समर्पण — स्थापना २०२६</span></div>
 
 <header class="site-header">
   <div class="header-inner">
@@ -46,6 +46,7 @@
     </a>
     <div class="header-right">
       <span class="header-tagline"><span data-i18n-hi>माँ अम्बे की सेवा में समर्पित एक प्रकाशन</span><span data-i18n-en>A publication dedicated to the service of Maa Ambe</span></span>
+      <a href="search.html" class="head-search" aria-label="खोजें">🔍</a>
       <button class="lang-toggle" type="button">EN</button>
       <button class="nav-toggle" aria-label="Menu">☰</button>
     </div>
@@ -78,6 +79,11 @@
     <div class="filter-row">
       <input type="text" id="site-search" placeholder="जैसे: सीता, राधा, नवरात्रि, शक्ति पीठ…" autofocus style="padding:12px 18px; border-radius:30px; border:1px solid var(--gold-400); font-family:var(--font-hi); width:100%; max-width:420px; font-size:1.05rem;">
     </div>
+    <div class="filter-row" id="type-tabs">
+      <span class="filter-tab active" data-type="all">सभी</span>
+      <span class="filter-tab" data-type="book">ग्रंथ</span>
+      <span class="filter-tab" data-type="blog">ब्लॉग कथाएँ</span>
+    </div>
     <p id="search-status" style="color:var(--text-muted,#777); margin:14px 0;"></p>
     <div class="grid grid-3" id="search-results"></div>
   </div>
@@ -89,6 +95,25 @@
   var resultsEl = document.getElementById('search-results');
   var statusEl = document.getElementById('search-status');
   var indexData = [];
+  var activeType = 'all';
+
+  function esc(t){ return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function hl(text, q){
+    var t = esc(text);
+    if (!q) return t;
+    var i = t.toLowerCase().indexOf(q.toLowerCase());
+    if (i === -1) return t;
+    return t.slice(0,i) + '<mark class="search-hl">' + t.slice(i, i+q.length) + '</mark>' + t.slice(i+q.length);
+  }
+
+  document.querySelectorAll('#type-tabs .filter-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('#type-tabs .filter-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeType = tab.getAttribute('data-type');
+      search(input.value);
+    });
+  });
 
   function iconFor(type){
     return type === 'book' ? '📖' : '✦';
@@ -115,8 +140,8 @@
         '<div class="blog-cover">' + iconFor(item.type) + '</div>' +
         '<div class="card-body">' +
           '<span class="tag-chip">' + (item.type === 'book' ? 'ग्रंथ' : 'ब्लॉग') + '</span>' +
-          '<h3>' + item.title_hi + '</h3>' +
-          '<p>' + item.excerpt_hi + '</p>' +
+          '<h3>' + hl(item.title_hi, query) + '</h3>' +
+          '<p>' + hl(item.excerpt_hi, query) + '</p>' +
         '</div>';
       resultsEl.appendChild(card);
     });
@@ -126,6 +151,7 @@
     var q = query.trim().toLowerCase();
     if (!q) { render([], ''); return; }
     var results = indexData.filter(function(item){
+      if (activeType !== 'all' && item.type !== activeType) return false;
       var hay = [item.title_hi, item.title_en, item.excerpt_hi, item.excerpt_en]
         .concat(item.tags || [])
         .join(' ')
@@ -174,6 +200,9 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="granth-sangrah.html">Books</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="sampadan-prakriya.html">संपादन-प्रक्रिया</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="search.html">खोजें</a></li>
           <li><a href="contact.html">Contact Us</a></li>

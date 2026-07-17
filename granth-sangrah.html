@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HGVERH7T1"></script>
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<div class="mantra-strip">ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः</div>
+<div class="mantra-strip"><span>ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः</span><span class="est">सेवा · सत्य · समर्पण — स्थापना २०२६</span></div>
 
 <header class="site-header">
   <div class="header-inner">
@@ -46,6 +46,7 @@
     </a>
     <div class="header-right">
       <span class="header-tagline"><span data-i18n-hi>माँ अम्बे की सेवा में समर्पित एक प्रकाशन</span><span data-i18n-en>A publication dedicated to the service of Maa Ambe</span></span>
+      <a href="search.html" class="head-search" aria-label="खोजें">🔍</a>
       <button class="lang-toggle" type="button">EN</button>
       <button class="nav-toggle" aria-label="Menu">☰</button>
     </div>
@@ -94,7 +95,7 @@
             <span class="tag-chip">भगवती कथा संग्रह</span>
             <span class="tag-chip approved">स्वीकृत</span>
           </div>
-          <h3>सीतायण</h3>
+          <h3>सीतायण <span class="sap-code">SAP-001</span></h3>
           <p><b>Paperback ₹799 · Ebook ₹249</b><br>माँ सीता की दृष्टि से — ७ काण्ड, ८६ अध्याय, ४९७ पृष्ठ, TOC सहित।</p>
         </div>
       </a>
@@ -105,7 +106,7 @@
             <span class="tag-chip">भगवती कथा संग्रह</span>
             <span class="tag-chip approved">स्वीकृत</span>
           </div>
-          <h3>राधावतारम्</h3>
+          <h3>राधावतारम् <span class="sap-code">SAP-002</span></h3>
           <p><b>Paperback ₹799 · Ebook ₹249</b><br>राधा-कृष्ण की शाश्वत प्रेम-गाथा — ७ खण्ड, ९३ अध्याय, ४२० पृष्ठ, TOC सहित।</p>
         </div>
       </a>
@@ -116,7 +117,7 @@
             <span class="tag-chip">भगवती कथा संग्रह</span>
             <span class="tag-chip approved">स्वीकृत</span>
           </div>
-          <h3>महासती गौरी</h3>
+          <h3>महासती गौरी <span class="sap-code">SAP-003</span></h3>
           <p><b>Paperback ₹799 · Ebook ₹249</b><br>माता गौरी और माता पार्वती की कथा — ७ खण्ड, ८५ अध्याय, ४१० पृष्ठ, TOC सहित।</p>
         </div>
       </a>
@@ -127,15 +128,15 @@
       <h2>प्रक्रिया में — शीघ्र प्रकाशित होंगे</h2>
     </div>
     <div class="grid grid-3">
-      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>श्रीमद् देवी भागवत महापुराण</h3></div></div>
-      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>कालिका पुराण</h3></div></div>
-      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>देवी पुराण</h3></div></div>
-      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>ब्रह्मवैवर्त पुराण</h3></div></div>
-      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>दुर्गा सप्तशती</h3></div></div>
-      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>दस महाविद्या सम्पूर्ण</h3></div></div>
-      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>भगवती उपासना</h3></div></div>
-      <div class="card" data-category="anya"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>भगवती भक्त</h3></div></div>
-      <div class="card" data-category="anya"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>माँ समस्त पर्व</h3></div></div>
+      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>श्रीमद् देवी भागवत महापुराण</h3><p class="sap-code" style="margin:6px 0 0;">SAP-004</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AE%E0%A4%A6%E0%A5%8D%20%E0%A4%A6%E0%A5%87%E0%A4%B5%E0%A5%80%20%E0%A4%AD%E0%A4%BE%E0%A4%97%E0%A4%B5%E0%A4%A4%20%E0%A4%AE%E0%A4%B9%E0%A4%BE%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%BE%E0%A4%A3%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>कालिका पुराण</h3><p class="sap-code" style="margin:6px 0 0;">SAP-005</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%95%E0%A4%BE%E0%A4%B2%E0%A4%BF%E0%A4%95%E0%A4%BE%20%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%BE%E0%A4%A3%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>देवी पुराण</h3><p class="sap-code" style="margin:6px 0 0;">SAP-006</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%A6%E0%A5%87%E0%A4%B5%E0%A5%80%20%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%BE%E0%A4%A3%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="puran"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>ब्रह्मवैवर्त पुराण</h3><p class="sap-code" style="margin:6px 0 0;">SAP-007</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%AC%E0%A5%8D%E0%A4%B0%E0%A4%B9%E0%A5%8D%E0%A4%AE%E0%A4%B5%E0%A5%88%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%A4%20%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A4%BE%E0%A4%A3%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>दुर्गा सप्तशती</h3><p class="sap-code" style="margin:6px 0 0;">SAP-008</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%BE%20%E0%A4%B8%E0%A4%AA%E0%A5%8D%E0%A4%A4%E0%A4%B6%E0%A4%A4%E0%A5%80%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>दस महाविद्या सम्पूर्ण</h3><p class="sap-code" style="margin:6px 0 0;">SAP-009</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%A6%E0%A4%B8%20%E0%A4%AE%E0%A4%B9%E0%A4%BE%E0%A4%B5%E0%A4%BF%E0%A4%A6%E0%A5%8D%E0%A4%AF%E0%A4%BE%20%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="upasana"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>भगवती उपासना</h3><p class="sap-code" style="margin:6px 0 0;">SAP-010</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%AD%E0%A4%97%E0%A4%B5%E0%A4%A4%E0%A5%80%20%E0%A4%89%E0%A4%AA%E0%A4%BE%E0%A4%B8%E0%A4%A8%E0%A4%BE%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="anya"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>भगवती भक्त</h3><p class="sap-code" style="margin:6px 0 0;">SAP-011</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%AD%E0%A4%97%E0%A4%B5%E0%A4%A4%E0%A5%80%20%E0%A4%AD%E0%A4%95%E0%A5%8D%E0%A4%A4%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
+      <div class="card" data-category="anya"><div class="card-body"><span class="soon-chip">जल्द आ रहा है</span><h3>माँ समस्त पर्व</h3><p class="sap-code" style="margin:6px 0 0;">SAP-012</p><a class="notify-btn" target="_blank" rel="noopener" href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20jab%20%22%E0%A4%AE%E0%A4%BE%E0%A4%81%20%E0%A4%B8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%20%E0%A4%AA%E0%A4%B0%E0%A5%8D%E0%A4%B5%22%20prakashit%20ho%20to%20mujhe%20suchit%20karein.">🔔 प्रकाशित हो तो सूचित करें</a></div></div>
     </div>
 
     <p class="coming-note">ऊपर सूचीबद्ध सभी ग्रंथ पुनर्लेखन एवं अंतिम रूप देने की प्रक्रिया में हैं — तैयार होते ही क्रमशः प्रकाशित किए जाएँगे।</p>
@@ -161,6 +162,9 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="granth-sangrah.html">Books</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="sampadan-prakriya.html">संपादन-प्रक्रिया</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="search.html">खोजें</a></li>
           <li><a href="contact.html">Contact Us</a></li>
