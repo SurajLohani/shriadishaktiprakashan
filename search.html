@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>खोजें — श्री आदिशक्ति प्रकाशन</title>
+<meta name="description" content="ग्रंथों, कथाओं और लेखों में खोजें — श्री आदिशक्ति प्रकाशन।">
+<link rel="canonical" href="https://shriadishaktiprakashan.com/search.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="खोजें — श्री आदिशक्ति प्रकाशन">
+<meta property="og:description" content="ग्रंथों, कथाओं और लेखों में खोजें — श्री आदिशक्ति प्रकाशन।">
+<meta property="og:url" content="https://shriadishaktiprakashan.com/search.html">
+<meta property="og:image" content="https://shriadishaktiprakashan.com/assets/img/logo-full.jpg">
+<meta property="og:site_name" content="श्री आदिशक्ति प्रकाशन">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="खोजें — श्री आदिशक्ति प्रकाशन">
+<meta name="twitter:description" content="ग्रंथों, कथाओं और लेखों में खोजें — श्री आदिशक्ति प्रकाशन।">
+<meta name="twitter:image" content="https://shriadishaktiprakashan.com/assets/img/logo-full.jpg">
+
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6HGVERH7T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6HGVERH7T1');
+</script>
+</head>
+<body>
+
+<div class="mantra-strip">ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">अ</div>
+      <div class="brand-text">
+        <div class="name">श्री आदिशक्ति प्रकाशन</div>
+        <div class="tagline"><span data-i18n-hi>ग्रंथ · भक्ति · प्रकाशन</span><span data-i18n-en>Scriptures · Devotion · Publishing</span></div>
+      </div>
+    </a>
+    <div class="header-right">
+      <span class="header-tagline"><span data-i18n-hi>माँ अम्बे की सेवा में समर्पित एक प्रकाशन</span><span data-i18n-en>A publication dedicated to the service of Maa Ambe</span></span>
+      <button class="lang-toggle" type="button">EN</button>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="granth-sangrah.html">Books</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="search.html" class="active">खोजें</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section class="hero hero-sm">
+  <div class="hero-inner">
+    <span class="pill-badge">खोजें</span>
+    <h1>ग्रंथों और <span class="accent">कथाओं में खोजें</span></h1>
+    <p class="lead">ग्रंथ, अध्याय-विषय और ब्लॉग कथाओं में तुरंत खोजें।</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="filter-row">
+      <input type="text" id="site-search" placeholder="जैसे: सीता, राधा, नवरात्रि, शक्ति पीठ…" autofocus style="padding:12px 18px; border-radius:30px; border:1px solid var(--gold-400); font-family:var(--font-hi); width:100%; max-width:420px; font-size:1.05rem;">
+    </div>
+    <p id="search-status" style="color:var(--text-muted,#777); margin:14px 0;"></p>
+    <div class="grid grid-3" id="search-results"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var input = document.getElementById('site-search');
+  var resultsEl = document.getElementById('search-results');
+  var statusEl = document.getElementById('search-status');
+  var indexData = [];
+
+  function iconFor(type){
+    return type === 'book' ? '📖' : '✦';
+  }
+
+  function render(list, query){
+    resultsEl.innerHTML = '';
+    if (!query) {
+      statusEl.textContent = 'ऊपर टाइप करके ग्रंथ या ब्लॉग कथा खोजें।';
+      return;
+    }
+    if (list.length === 0) {
+      statusEl.textContent = '"' + query + '" के लिए कोई परिणाम नहीं मिला।';
+      return;
+    }
+    statusEl.textContent = list.length + ' परिणाम मिले।';
+    list.forEach(function(item){
+      var card = document.createElement('a');
+      card.href = item.url;
+      card.className = 'card blog-card';
+      card.style.textDecoration = 'none';
+      card.style.color = 'inherit';
+      card.innerHTML =
+        '<div class="blog-cover">' + iconFor(item.type) + '</div>' +
+        '<div class="card-body">' +
+          '<span class="tag-chip">' + (item.type === 'book' ? 'ग्रंथ' : 'ब्लॉग') + '</span>' +
+          '<h3>' + item.title_hi + '</h3>' +
+          '<p>' + item.excerpt_hi + '</p>' +
+        '</div>';
+      resultsEl.appendChild(card);
+    });
+  }
+
+  function search(query){
+    var q = query.trim().toLowerCase();
+    if (!q) { render([], ''); return; }
+    var results = indexData.filter(function(item){
+      var hay = [item.title_hi, item.title_en, item.excerpt_hi, item.excerpt_en]
+        .concat(item.tags || [])
+        .join(' ')
+        .toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+    render(results, query);
+  }
+
+  fetch('assets/data/search-index.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      indexData = data;
+      statusEl.textContent = 'ऊपर टाइप करके ग्रंथ या ब्लॉग कथा खोजें।';
+      var params = new URLSearchParams(window.location.search);
+      var qParam = params.get('q');
+      if (qParam) {
+        input.value = qParam;
+        search(qParam);
+      }
+    })
+    .catch(function(){
+      statusEl.textContent = 'खोज सूची लोड नहीं हो पाई। कृपया पुनः प्रयास करें।';
+    });
+
+  input.addEventListener('input', function(e){ search(e.target.value); });
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">श्री आदिशक्ति प्रकाशन</div>
+        <p><span data-i18n-hi>ग्रंथ, भक्ति और प्रकाशन के माध्यम से माँ अम्बे की सेवा।</span><span data-i18n-en>Serving Maa Ambe through scriptures, devotion and publishing.</span></p>
+        <div class="social-row">
+          <a href="https://www.youtube.com/channel/UCyw5Me50FzpeCBk05F2s9fg" aria-label="YouTube" target="_blank" rel="noopener">YT</a>
+          <a href="https://www.facebook.com/profile.php?id=61592190111177" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+          <a href="https://www.instagram.com/shri.adishaktiprakashan/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+          <a href="https://x.com/shriadishaktipr" aria-label="X" target="_blank" rel="noopener">X</a>
+          <a href="https://www.linkedin.com/company/shri-adishakti-prakashan/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="granth-sangrah.html">Books</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="search.html">खोजें</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:shikha@shriadishaktiprakashan.com">shikha@shriadishaktiprakashan.com</a></li>
+          <li><a href="tel:+917011283542">+91-7011283542</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Trust &amp; Registration</h4>
+        <ul>
+          <li>Udyam Reg. No: UDYAM-UP-29-0247362</li>
+          <li>सिद्धार्थ विहार, ग़ाज़ियाबाद, उत्तर प्रदेश</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      ॐ नमो श्री भगवती जगदम्बिके दुर्गायै नमः<br>
+      © 2026 श्री आदिशक्ति प्रकाशन। सर्वाधिकार सुरक्षित।
+    </div>
+  </div>
+</footer>
+
+<a href="contact.html" class="float-inquiry">🙏 पूछताछ करें</a>
+
+<script src="assets/js/main.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "श्री आदिशक्ति प्रकाशन",
+  "alternateName": "Shri Adishakti Prakashan",
+  "url": "https://shriadishaktiprakashan.com/",
+  "logo": "https://shriadishaktiprakashan.com/assets/img/logo-full.jpg",
+  "email": "shikha@shriadishaktiprakashan.com",
+  "telephone": "+91-7011283542",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ghaziabad",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.youtube.com/channel/UCyw5Me50FzpeCBk05F2s9fg",
+    "https://www.facebook.com/profile.php?id=61592190111177",
+    "https://www.instagram.com/shri.adishaktiprakashan/",
+    "https://x.com/shriadishaktipr",
+    "https://www.linkedin.com/company/shri-adishakti-prakashan/"
+  ]
+}
+</script>
+</body>
+</html>
