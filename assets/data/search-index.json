@@ -1,0 +1,316 @@
+[
+  {
+    "id": "book-sitayan",
+    "type": "book",
+    "title_hi": "सीतायण",
+    "title_en": "Sitayan",
+    "excerpt_hi": "माँ सीता की दृष्टि से रामायण — सात काण्ड, ८६ अध्याय।",
+    "excerpt_en": "The Ramayan, retold through Mother Sita's eyes — 7 kaand, 86 chapters.",
+    "url": "sitayan.html",
+    "tags": [
+      "सीतायण",
+      "sitayan",
+      "राम",
+      "सीता",
+      "रामायण",
+      "ramayan",
+      "sita"
+    ]
+  },
+  {
+    "id": "book-radhavtaram",
+    "type": "book",
+    "title_hi": "राधावतारम्",
+    "title_en": "Radhavtaram",
+    "excerpt_hi": "राधा-कृष्ण की शाश्वत प्रेम-गाथा — सात खण्ड, ९३ अध्याय।",
+    "excerpt_en": "The eternal love story of Radha-Krishna — 7 khand, 93 chapters.",
+    "url": "radhavtaram.html",
+    "tags": [
+      "राधावतारम्",
+      "radhavtaram",
+      "राधा",
+      "कृष्ण",
+      "radha",
+      "krishna",
+      "व्रज"
+    ]
+  },
+  {
+    "id": "book-mahasati-gauri",
+    "type": "book",
+    "title_hi": "महासती गौरी",
+    "title_en": "Mahasati Gauri",
+    "excerpt_hi": "माता गौरी और माता पार्वती की कथा — सात खण्ड, ८५ अध्याय।",
+    "excerpt_en": "The story of Mother Gauri and Mother Parvati — 7 khand, 85 chapters.",
+    "url": "mahasati-gauri.html",
+    "tags": [
+      "महासती गौरी",
+      "mahasati gauri",
+      "सती",
+      "पार्वती",
+      "शिव",
+      "parvati",
+      "shiv",
+      "gauri"
+    ]
+  },
+  {
+    "id": "blog-sita-sutradhar",
+    "type": "blog",
+    "title_hi": "सीता जो पीड़िता नहीं, सूत्रधार थीं",
+    "title_en": "Sita — Not a Victim, but the Storyteller",
+    "excerpt_hi": "सीतायण की मूल दृष्टि — माँ सीता की कथा को उनकी अपनी आँखों से देखने का प्रयास।",
+    "excerpt_en": "The core lens of Sitayan — viewing Mother Sita's story through her own eyes.",
+    "url": "blog/sita-sutradhar.html",
+    "tags": [
+      "सीतायण",
+      "सीता",
+      "sitayan",
+      "sita"
+    ]
+  },
+  {
+    "id": "blog-sita-janam",
+    "type": "blog",
+    "title_hi": "सीता-जन्म का रहस्य",
+    "title_en": "The Mystery of Sita's Birth",
+    "excerpt_hi": "धरती से प्रकट माँ सीता के जन्म से जुड़ी दिव्य कथा का संक्षिप्त वर्णन।",
+    "excerpt_en": "A brief account of Mother Sita's divine birth from the earth.",
+    "url": "blog/sita-janam-rahasya.html",
+    "tags": [
+      "सीतायण",
+      "सीता-जन्म",
+      "sita janam"
+    ]
+  },
+  {
+    "id": "blog-dhanush-bhang",
+    "type": "blog",
+    "title_hi": "स्वयंवर से पहले — धनुष-भंग की कथा",
+    "title_en": "Before the Swayamvar — the Breaking of the Bow",
+    "excerpt_hi": "जनकपुरी के स्वयंवर और शिव-धनुष भंग के प्रसंग की झलक।",
+    "excerpt_en": "A glimpse of the Janakpuri swayamvar and the breaking of Shiv's bow.",
+    "url": "blog/swayamvar-dhanush-bhang.html",
+    "tags": [
+      "स्वयंवर",
+      "धनुष",
+      "जनकपुरी",
+      "swayamvar"
+    ]
+  },
+  {
+    "id": "blog-kaikeyi",
+    "type": "blog",
+    "title_hi": "कैकेयी का पश्चाताप",
+    "title_en": "Kaikeyi's Repentance",
+    "excerpt_hi": "वनवास के निर्णय के बाद कैकेयी के हृदय में उठे पश्चाताप की मार्मिक कथा।",
+    "excerpt_en": "The poignant story of Kaikeyi's remorse after the exile decision.",
+    "url": "blog/kaikeyi-pashchatap.html",
+    "tags": [
+      "कैकेयी",
+      "वनवास",
+      "kaikeyi"
+    ]
+  },
+  {
+    "id": "blog-radha-janam",
+    "type": "blog",
+    "title_hi": "राधा-जन्म — स्वर्ण-कमल का रहस्य",
+    "title_en": "Radha's Birth — the Mystery of the Golden Lotus",
+    "excerpt_hi": "राधारानी के जन्म से जुड़ी दिव्य और रहस्यमयी कथा।",
+    "excerpt_en": "The divine and mysterious story of Radharani's birth.",
+    "url": "blog/radha-janam-swarn-kamal.html",
+    "tags": [
+      "राधावतारम्",
+      "राधा-जन्म",
+      "radha janam"
+    ]
+  },
+  {
+    "id": "blog-bansuri",
+    "type": "blog",
+    "title_hi": "बांसुरी की पुकार — व्रज का मंत्रमुग्ध होना",
+    "title_en": "The Call of the Flute — Vraj Enchanted",
+    "excerpt_hi": "श्रीकृष्ण की बांसुरी की तान से समूचे व्रज के मंत्रमुग्ध होने की कथा।",
+    "excerpt_en": "How the whole of Vraj was enchanted by Shri Krishna's flute.",
+    "url": "blog/bansuri-ki-pukar.html",
+    "tags": [
+      "राधावतारम्",
+      "बांसुरी",
+      "कृष्ण",
+      "bansuri",
+      "krishna"
+    ]
+  },
+  {
+    "id": "blog-raas-leela",
+    "type": "blog",
+    "title_hi": "रास-लीला — प्रेम-पथ का प्रथम दर्शन",
+    "title_en": "Raas-Leela — First Glimpse of the Path of Love",
+    "excerpt_hi": "राधा-कृष्ण की रास-लीला के आध्यात्मिक अर्थ पर एक दृष्टि।",
+    "excerpt_en": "A view on the spiritual meaning of the Raas-Leela of Radha-Krishna.",
+    "url": "blog/raas-leela-prem-path.html",
+    "tags": [
+      "राधावतारम्",
+      "रास-लीला",
+      "raas leela"
+    ]
+  },
+  {
+    "id": "blog-govardhan",
+    "type": "blog",
+    "title_hi": "गोवर्धन-लीला — शरणागत की रक्षा",
+    "title_en": "Govardhan-Leela — Protecting the Surrendered",
+    "excerpt_hi": "गोवर्धन पर्वत उठाकर व्रजवासियों की रक्षा की अमर कथा।",
+    "excerpt_en": "The immortal story of lifting Govardhan to protect the people of Vraj.",
+    "url": "blog/govardhan-leela-sharanagat.html",
+    "tags": [
+      "राधावतारम्",
+      "गोवर्धन",
+      "govardhan"
+    ]
+  },
+  {
+    "id": "blog-sati-janam",
+    "type": "blog",
+    "title_hi": "सती का जन्म — आदिशक्ति का अवतरण",
+    "title_en": "Sati's Birth — the Descent of Adishakti",
+    "excerpt_hi": "दक्ष-प्रजापति की पुत्री के रूप में आदिशक्ति के अवतरण की कथा।",
+    "excerpt_en": "The story of Adishakti's descent as the daughter of Daksh Prajapati.",
+    "url": "blog/sati-janam-adishakti.html",
+    "tags": [
+      "महासती गौरी",
+      "सती-जन्म",
+      "sati janam"
+    ]
+  },
+  {
+    "id": "blog-daksh-yagya",
+    "type": "blog",
+    "title_hi": "दक्ष-यज्ञ और सती का आत्मदाह",
+    "title_en": "Daksh's Yagya and Sati's Self-Immolation",
+    "excerpt_hi": "सती के सतीत्व, तप और बलिदान की मार्मिक और प्रेरक कथा।",
+    "excerpt_en": "The moving and inspiring story of Sati's chastity, penance and sacrifice.",
+    "url": "blog/daksh-yagya-atmadah.html",
+    "tags": [
+      "महासती गौरी",
+      "दक्ष-यज्ञ",
+      "daksh yagya"
+    ]
+  },
+  {
+    "id": "blog-parvati-tapasya",
+    "type": "blog",
+    "title_hi": "पार्वती की तपस्या — शिव-प्राप्ति का संकल्प",
+    "title_en": "Parvati's Penance — the Resolve to Attain Shiv",
+    "excerpt_hi": "हिमालय-तनया पार्वती की कठोर तपस्या और अटूट संकल्प की कथा।",
+    "excerpt_en": "The story of Himalaya's daughter Parvati's rigorous penance and resolve.",
+    "url": "blog/parvati-tapasya-shiv-prapti.html",
+    "tags": [
+      "महासती गौरी",
+      "पार्वती",
+      "तपस्या",
+      "parvati tapasya"
+    ]
+  },
+  {
+    "id": "blog-parvati-shiv-vivah",
+    "type": "blog",
+    "title_hi": "पार्वती-शिव विवाह की दिव्य लीला",
+    "title_en": "The Divine Wedding of Parvati and Shiv",
+    "excerpt_hi": "कैलाश में सम्पन्न हुए भव्य दिव्य विवाह का वर्णन।",
+    "excerpt_en": "An account of the grand divine wedding held in Kailash.",
+    "url": "blog/parvati-shiv-vivah-divya-leela.html",
+    "tags": [
+      "महासती गौरी",
+      "विवाह",
+      "parvati shiv vivah"
+    ]
+  },
+  {
+    "id": "blog-navratri",
+    "type": "blog",
+    "title_hi": "नवरात्रि का महत्व — नौ दिन, नौ रूप",
+    "title_en": "The Significance of Navratri — Nine Days, Nine Forms",
+    "excerpt_hi": "माँ दुर्गा के नौ रूपों की महिमा और नवरात्रि साधना का संक्षिप्त वर्णन।",
+    "excerpt_en": "The glory of Maa Durga's nine forms and Navratri sadhana.",
+    "url": "blog/navratri-mahatva.html",
+    "tags": [
+      "उपासना",
+      "नवरात्रि",
+      "navratri"
+    ]
+  },
+  {
+    "id": "blog-durga-saptashati",
+    "type": "blog",
+    "title_hi": "दुर्गा सप्तशती पाठ की विधि",
+    "title_en": "How to Recite Durga Saptashati",
+    "excerpt_hi": "घर पर श्रद्धापूर्वक दुर्गा सप्तशती पाठ करने की सरल विधि।",
+    "excerpt_en": "A simple method for reciting Durga Saptashati with devotion at home.",
+    "url": "blog/durga-saptashati-vidhi.html",
+    "tags": [
+      "उपासना",
+      "दुर्गा सप्तशती",
+      "durga saptashati"
+    ]
+  },
+  {
+    "id": "blog-shakti-peeth",
+    "type": "blog",
+    "title_hi": "51 शक्ति पीठों की कथा",
+    "title_en": "The Story of the 51 Shakti Peeths",
+    "excerpt_hi": "शक्ति पीठों की उत्पत्ति और उनकी महिमा से जुड़ा एक परिचय।",
+    "excerpt_en": "An introduction to the origin and glory of the Shakti Peeths.",
+    "url": "blog/51-shakti-peeth-katha.html",
+    "tags": [
+      "उपासना",
+      "शक्ति पीठ",
+      "shakti peeth"
+    ]
+  },
+  {
+    "id": "blog-nau-durga-sutra",
+    "type": "blog",
+    "title_hi": "नौ दुर्गा के नौ स्वरूप — जीवन के लिए नौ सूत्र",
+    "title_en": "Nine Forms of Durga — Nine Life Principles",
+    "excerpt_hi": "माँ दुर्गा के नौ रूपों से मिलने वाले जीवन-प्रबंधन के व्यावहारिक सूत्र।",
+    "excerpt_en": "Practical life lessons drawn from the nine forms of Maa Durga.",
+    "url": "blog/nau-durga-swaroop-jeevan-sutra.html",
+    "tags": [
+      "उपासना",
+      "नवदुर्गा",
+      "navdurga"
+    ]
+  },
+  {
+    "id": "blog-grihasth-vairagya",
+    "type": "blog",
+    "title_hi": "गृहस्थ वैराग्य — संसार में रहकर समर्पण",
+    "title_en": "Grihasth Vairagya — Surrender While Living in the World",
+    "excerpt_hi": "संसार से भागे बिना, गृहस्थ जीवन में रहते हुए पूर्ण समर्पण की साधना पर एक दृष्टि।",
+    "excerpt_en": "A view on complete surrender while fulfilling householder responsibilities.",
+    "url": "blog/grihasth-vairagya-samarpan.html",
+    "tags": [
+      "उपासना",
+      "गृहस्थ वैराग्य",
+      "grihasth vairagya",
+      "samarpan"
+    ]
+  },
+  {
+    "id": "blog-kritagyata",
+    "type": "blog",
+    "title_hi": "कृतज्ञता — साधना की नींव",
+    "title_en": "Gratitude — the Foundation of Sadhana",
+    "excerpt_hi": "साधना और गृहस्थ जीवन दोनों में कृतज्ञता के भाव के महत्व पर एक भक्ति-लेख।",
+    "excerpt_en": "The importance of gratitude in both sadhana and householder life.",
+    "url": "blog/kritagyata-sadhna-ki-neev.html",
+    "tags": [
+      "उपासना",
+      "कृतज्ञता",
+      "kritagyata",
+      "gratitude"
+    ]
+  }
+]
