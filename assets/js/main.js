@@ -5,18 +5,21 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyLang(lang) {
     document.body.classList.toggle('lang-en', lang === 'en');
     document.documentElement.lang = lang === 'en' ? 'en' : 'hi';
-    var btn = document.querySelector('.lang-toggle');
-    if (btn) { btn.textContent = lang === 'en' ? 'हिं' : 'EN'; }
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    document.querySelectorAll('.float-inquiry[data-wa-hi]').forEach(function (a) {
+      var url = lang === 'en' ? a.getAttribute('data-wa-en') : a.getAttribute('data-wa-hi');
+      if (url) a.setAttribute('href', url);
+    });
     try { localStorage.setItem('sap-lang', lang); } catch (e) {}
   }
   applyLang(savedLang);
-  var langBtn = document.querySelector('.lang-toggle');
-  if (langBtn) {
-    langBtn.addEventListener('click', function () {
-      var next = document.body.classList.contains('lang-en') ? 'hi' : 'en';
-      applyLang(next);
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyLang(btn.getAttribute('data-lang'));
     });
-  }
+  });
 
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.main-nav');

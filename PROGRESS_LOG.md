@@ -105,8 +105,271 @@ Working copy: `sap-site-progress2.zip` → unzipped and being edited page-by-pag
 
 ## ALL 7 PHASES COMPLETE
 
-Every phase in the original plan is now done. The one remaining action is entirely yours: deploy this content to GitHub Pages (push/upload), then return to Search Console and click "Verify" on the `shriadishaktiprakashan.com` property (the verification tag is already embedded and waiting).
+## Phase 8 — Deployment (✅ COMPLETE — site is LIVE)
+
+- Created GitHub repository **`SurajLohani/shriadishaktiprakashan`** (public) and uploaded all 62 site files via GitHub's web upload interface (folder structure preserved: root pages, `blog/`, `assets/css`, `assets/js`, `assets/data`, `assets/img` incl. `covers/` and `gallery/`, `assets/samples`, `assets/docs`) across 9 commits.
+- Enabled **GitHub Pages** (Settings → Pages → Source: Deploy from branch `main` / root). Custom domain `shriadishaktiprakashan.com` recognized automatically via the repo's `CNAME` file — DNS check successful.
+- **Root cause found and fixed for why the domain wasn't showing the new site**: `shriadishaktiprakashan.com` DNS is managed on **Cloudflare** (nameservers, not just registrar), and an old pre-existing **Cloudflare Worker** ("shriadishaktiprakashan", a static-assets Worker from an earlier, unrelated deployment) was bound to the apex domain as a Custom Domain — it was silently serving old cached content and GitHub Pages traffic never reached it. Fixed by:
+  1. Removing the Worker's Custom Domain binding (Workers & Pages → shriadishaktiprakashan → Domains → Remove).
+  2. Adding 4 new **A records** for the apex (`@`) pointing to GitHub Pages: `185.199.108.153`, `.109.153`, `.110.153`, `.111.153` (Proxied through Cloudflare).
+  - Existing email (Google Workspace MX records), SPF TXT, and the `www` CNAME (Namecheap parking) were left untouched.
+- Verified live: homepage, gallery (all 10 real temple photos), `sitayan.html` (book page with cover/TOC), a blog article, and `search.html` all serve correctly over `https://shriadishaktiprakashan.com/`.
+- **Google Search Console**: clicked "Verify" — auto-verified successfully via both the HTML meta tag and the GA snippet (dual verification, more resilient).
+- **Sitemap submitted** to Search Console (`/sitemap.xml`) — Google immediately discovered all 31 pages, status: Success.
 
 ## Delivery plan
 
-Every changed/new file has been re-zipped and delivered via chat, **and** copied into `Shri Adishakti Prakashan Website Supporting` folder on this computer — deployment to GitHub Pages remains the user's own step.
+Every changed/new file has been re-zipped and delivered via chat, **and** copied into `Shri Adishakti Prakashan Website Supporting` folder on this computer. Deployment is now done — the site is live at https://shriadishaktiprakashan.com/.
+
+## Phase 9 — Premium Build चरण 1 (✅ DEPLOYED — 17 Jul 2026)
+
+Premium_Upgrade_Master_List.md के आधार पर पहला बड़ा build — design foundation + नए pages + book-page upgrades, सब live:
+
+**Design foundation (A-series):**
+- Rozha One display font सभी मुख्य headings/brand पर (A5) · dark premium footer gold border के साथ (A6) · section-dark alternating bands (A2) · scroll-reveal animations + prefers-reduced-motion सम्मान (A3) · button/card microinteractions (A4)।
+
+**Site-wide:**
+- Mantra-strip में पहचान-पंक्ति "सेवा · सत्य · समर्पण — स्थापना २०२६" (H1) · हर page के header में 🔍 search icon (H2) · सभी 31 पुराने pages के footer में Catalogue/FAQ/संपादन-प्रक्रिया links।
+
+**Homepage:**
+- 🪔 श्रावण festival strip (D5/H6) · hero stat-chips: ३ ग्रंथ · २६४ अध्याय · १,३२७ पृष्ठ · ९ आगामी · १८ कथा-लेख (A1/H5) · सीतायण spotlight section 3D cover के साथ (B3) · trust-chip row (B2) · author-strip: निमित्त-परिचय photo सहित (B1) · पाठ-सूचियाँ section · newsletter में निःशुल्क नमूना links (B4-lite)।
+
+**Book pages ×3 (sitayan/radhavtaram/mahasati-gauri):**
+- Breadcrumbs + BreadcrumbList schema (F3) · per-book og:image (F2) · "अंदर झाँकें" buttons (C1/I2) · format accordion Paperback/Ebook, प्रति-format WhatsApp deep-links प्रीफ़िल्ड Hindi message के साथ (C4/C5/I3) · औपचारिक spec-table with SAP codes (H3/H4) · कथा-सत्संग मार्गदर्शिका — पाठ-विधि, चर्चा-प्रश्न, अवसर-अनुसार अंश (I6) · sticky order bar scroll पर (C3) · 3D cover hover (C2)।
+
+**Granth-sangrah:**
+- स्वीकृत cards पर SAP-001/2/3 codes · हर आगामी ग्रंथ (SAP-004…012) पर "🔔 प्रकाशित हो तो सूचित करें" WhatsApp notify button (D6/I8)।
+
+**नए pages (6):**
+- `faq.html` — 12 प्रश्न, FAQPage schema (D1) · `404.html` — भक्ति-भाव 404, absolute paths (D4) · `sampadan-prakriya.html` — 5-चरण प्रक्रिया + सेवा-संकल्प dark section (I7/H14) · `catalogue.html` — सभी 12 ग्रंथों की सारणी, Print/PDF + bulk-order WhatsApp (H8) · `shravan-path-suchi.html` + `navratri-path-suchi.html` — पर्व-अनुसार curation pages (I1)।
+
+**Blog experience (सभी 18 articles, JS-injected):**
+- Reading progress bar (E1) · WhatsApp/FB/X share + copy-link row · "आगे पढ़ें" related articles search-index से (E2)।
+
+**अन्य:** gallery कथा-रूप intro (H12-lite) · search में highlight + ग्रंथ/ब्लॉग tabs (F5) · sitemap.xml में 5 नए URLs।
+
+**Deploy:** 4 commits via GitHub web upload (root 20 files / assets/css / assets/js / blog 18 files)। Live verification: सभी नए PAGES 200, DOM checks (chips/spotlight/author-strip/festival/est/search-icon/Rozha font = सब true), sticky bar + accordion + blog enhancements functional। Note: पहले attempt में commit clicks register नहीं हुए थे (page navigate जल्दी कर दिया था) — दोबारा JS-click + redirect-wait विधि से सब सफल।
+
+**अगले चरण (baaki items):** G3 full bilingual coverage (सबसे बड़ा), B4 full lead-magnet automation, D3 profile PDF, H7 online reader, H9 रचयिता pages, D2 testimonial design, F1 WebP, H13+ future items।
+
+---
+
+## Phase 10 — Bilingual audit (EN toggle spot-check) — 🔍 AUDIT DONE, 1 FIX READY (not yet deployed)
+
+Went through the live site with the `EN` toggle on, page by page, checking header/nav/footer chrome against the Phase 3 note above, plus what Phase 9 added afterward (breadcrumbs, new footer links) since those postdate the bilingual wiring and were never checked against it.
+
+**Finding — nav/footer label inconsistency (real bug, not a content gap):**
+Every page's main-nav and footer "Quick Links" mix hardcoded-English labels (Home, About Us, Books, Blog, Gallery, Contact Us — these were never wired to the toggle, they're just plain English text shown regardless of language) with **two Hindi-only stragglers that were added later and never wrapped**: "खोजें" (Search, added Phase 5) and "संपादन-प्रक्रिया" (Editorial Process, added Phase 9). Result: in EN mode, everything in the nav reads in English except those two — visibly inconsistent. Confirmed present identically on **all 37 files** (12 main pages + 18 blog articles + faq/catalogue/sampadan-prakriya/shravan & navratri path-suchi/404).
+
+**Finding — book-page breadcrumbs never wired for bilingual (Phase 9 regression against Phase 3):**
+The breadcrumb trail added in Phase 9 (`sitayan.html`, `radhavtaram.html`, `mahasati-gauri.html`) — "मुखपृष्ठ › ग्रंथ संग्रह › [book name]" — was built after the bilingual toggle existed but was never wrapped in `data-i18n-hi/en` spans. In EN mode the whole breadcrumb still shows in Hindi while the H1/lead directly below it is in English. Book name itself (सीतायण / राधावतारम् / महासती गौरी) is correctly left in Devanagari either way, matching the H1 pattern — only "मुखपृष्ठ" → Home and "ग्रंथ संग्रह" → Books needed wrapping.
+
+**Fix applied to a working copy** (`sap-premium-build1-langfix.zip`, delivered via chat — **not yet pushed to GitHub, live site unchanged**):
+- All 37 files: `खोजें` → `<span data-i18n-hi>खोजें</span><span data-i18n-en>Search</span>` in both the main-nav `<li>` and the footer Quick Links `<li>` (and the search-icon fallback CTA on `404.html`).
+- All 37 files: `संपादन-प्रक्रिया` → `<span data-i18n-hi>संपादन-प्रक्रिया</span><span data-i18n-en>Editorial Process</span>` in the footer Quick Links.
+- `search.html` itself: its own nav `<li>` (which carries `class="active"`) needed a separate one-line fix since it didn't match the other 36 files' exact markup.
+- 3 book pages: breadcrumb "मुखपृष्ठ"/"ग्रंथ संग्रह" wrapped the same way; book-name segment left untouched.
+- Verified with a headless-browser screenshot (local copy, EN mode) — nav now reads "Home · About Us · Books · Blog · Search · Gallery · Contact Us" throughout, and the Sitayan breadcrumb reads "Home › Books › सीतायण".
+
+**Not changed / still open (same as the Phase 3 "not yet translated" list — no new scope added here):** full chapter TOCs, samarpan/aabhar-vachan blocks, About/Blog/Gallery/Contact/legal page body copy, book-page format-accordion and WhatsApp CTA button text (e.g. "WhatsApp से order (2% छूट)"), `search.html`'s own hero/lead/JS status strings, and everything else already flagged under G3 in the Phase 9 "अगले चरण" list. This pass only fixed the **inconsistent nav/breadcrumb chrome**, not the larger content-translation backlog.
+
+**Deployment status:** this fix has **not been pushed live** — per the standing rule on not publishing/modifying public content without asking first. `sap-premium-build1-langfix.zip` is ready to upload via the same GitHub web-upload method used in Phases 8–9 (root pages + `search.html` + `blog/` folder, i.e. all 37 touched files) whenever you say go.
+
+---
+
+## Feature request — noted only, NOT built yet
+
+- **"Look Inside" page-flip preview (replace sample-chapter download link)** — Suraj shared a reference screenshot (Amazon-style book preview: left thumbnail strip of page images + a large centre page image + left/right arrow buttons to flip through pages, "LOOK INSIDE" label top-left). Request: replace the current "निःशुल्क नमूना अध्याय पढ़ें" behaviour (which just downloads/opens the sample PDF) on **all books** (currently the 3 live books, and to extend to future ones as they publish) with this kind of in-page, left/right-arrow, flip-through preview widget instead of a plain download.
+- Related to the already-flagged **H7 "online reader"** item in the Phase 9 "अगले चरण" list — this request is more specific (page-flip/"Look Inside" style UI, arrows + thumbnails, using the existing sample PDFs already at `assets/samples/*-sample.pdf`) and should be treated as the concrete spec for H7 when it's picked up.
+- **Explicitly not implemented yet** — user said to only note it in this file for now. No code/design work done.
+
+---
+
+## Reference review — gitapress.org (17 Jul 2026) — research only, NOT built
+
+Suraj asked me to check gitapress.org and note what's worth adapting. Browsed the homepage, a product page, the E-Books library, and Leela Chitra Mandir. Nothing built — recommendations only, prioritized for a small 3-book (growing to 12) devotional publisher rather than Gita Press's much larger multi-book operation.
+
+**Worth adapting (fits our scale):**
+- **In-browser "Read Book" flip preview** on the ebook/product page (separate "Read Book" button next to Add to Cart/Buy Now) — confirms the "Look Inside" flip-preview request above (Section: Feature request) is exactly the industry-standard pattern for religious-text publishers; treat that noted spec as the right direction for H7.
+- **Recently Viewed + Related Books** on book detail pages — low-effort once the catalogue grows past 3 books (all 12 SAP codes eventually); currently not needed with only 3 live books but worth planning for as SAP-004 onward publish.
+- **Category/Language/Author filters on a library-style listing page** — their `/ebook` page filters 310 titles by Category, Author, Language (14 languages!), and file type (PDF/epub), plus sort. Our `granth-sangrah.html` doesn't need this yet at 3 books, but is the right model to grow into once the 9 upcoming ग्रंथ start publishing — filters by खण्ड-भेद/भाषा rather than a flat grid.
+- **Trust line in the header** ("Serving humanity for truth and peace since 1923") — we already have the equivalent ("सेवा · सत्य · समर्पण — स्थापना २०२६" in the mantra-strip), so no action needed, just confirms our instinct was right.
+
+**Bigger scope — flag for later, not now:**
+- **Full cart/wishlist/account e-commerce system** (Add to Cart, wishlist heart, quantity stepper, Sign In/Sign Up, My Account, My Orders) — this is a different architecture than our current direct-to-Razorpay-Payment-Link buttons per format. Only worth building if/when we're selling many SKUs at once (bundles, multiple formats, combos) rather than 3 books × 2 formats each. Noting as a possible v2 direction, not a current gap.
+- **Native mobile app (Android/iOS)** — mentioned on their site footer. Not relevant at our current scale; parking this, not recommending it now.
+- **Dedicated periodical/magazine section (their "Kalyan" monthly)** — we don't publish a periodical, so not directly applicable; could inspire a future recurring content series (e.g. a monthly सत्संग-पत्रिका) but that's a content-strategy decision, not a website feature, and out of scope for this note.
+
+**Not relevant / skip:**
+- **Leela Chitra Mandir heritage-museum page** — tells the story of Gita Press's own physical building/pilgrimage landmark in Gorakhpur. We don't have an equivalent physical space tied to the publication itself (our gallery is temple photos, a separate context) — skip.
+- **Full site-wide language switch (English/हिंदी dropdown in header)** — cosmetically similar to our own EN/हिं toggle, but theirs swaps the *entire site* including product catalogue; ours is a lighter same-page content toggle, which is the right fit for our single-language-first (Hindi) content strategy. No change needed.
+
+**Status:** research/comparison only, nothing changed on the live or working-copy site. Revisit the "Worth adapting" list once the catalogue grows past the current 3 books, or sooner if Suraj wants the Read Book flip-preview (H7) prioritized now.
+
+---
+
+## My own suggestions (independent of gitapress.org) — 17 Jul 2026 — research only, NOT built
+
+Suraj asked what I'd suggest myself, beyond the competitor review. These are my own ideas, prioritized for our actual scale and voice (spiritual publisher, single niyat-author, 3 books today). Nothing built — noted only.
+
+**Highest value, low effort:**
+- **Real testimonial collection, replacing the placeholder over time** — homepage currently runs 3 honestly-labeled "प्रातिनिधिक भाव" (representative sentiment) cards, which was the right honest call at launch. Now that the site is live and books are selling via Razorpay, add a simple "अपना अनुभव साझा करें" form (Google Form, same pattern as the diagnostic-form workflow already used elsewhere) linked from the order-confirmation WhatsApp message, so real reader reflections start replacing the illustrative ones — genuine authority, not fabricated.
+- **"आज का श्लोक" (verse of the day) widget on the homepage** — a small rotating block pulling one shloka/couplet from the 3 books' samarpan or TOC content, changing daily. Cheap to build (a JS array + date-based index, no backend), gives people a reason to return daily, and reinforces "स्थापना २०२६... हर दिन एक दिन" as a living site, not just a static catalogue.
+- **Bundle pricing — "तीनों ग्रंथ एक साथ"** — a combo Razorpay Payment Link for all 3 books together at a small discount (e.g. ₹2,297 → ₹1,999), surfaced on `granth-sangrah.html` and the newsletter. Directly increases average order value with near-zero engineering (one more Razorpay link + one more card).
+
+**Worth doing this year:**
+- **PWA / "Add to Home Screen"** — a lightweight manifest.json + service worker (offline shell, install icon) gives an app-like presence without the cost/overhead of a real Android/iOS app (which I flagged as overkill in the gitapress note above). Good middle ground given the audience skews toward mobile devotional reading.
+- **Short audio clips of the samarpan shlokas / a stotra sample** — many devotees prefer listening to reading; even a 30–60 second recorded audio (Suraj's own voice, in keeping with the personal/niyat framing) embedded on each book page alongside the sample PDF would deepen the devotional feel more than any technical feature could.
+- **Deepen the About page with the personal journey** — About currently states the niyat framing (name + photo) but doesn't yet carry any of the struggle-to-service personal narrative already written and battle-tested for LinkedIn (the 1983–2021 journey: Gaya train, father's chai stall, 47 rejections, Eshansh's birth). A short, spiritually-framed (not corporate/resume-toned) version of this — "क्यों यह प्रकाशन बना" — would make the About page far more emotionally resonant than the current one-line bio. IVF/egg-donation detail stays excluded, per the existing standing privacy rule.
+
+**Worth considering, not urgent:**
+- **Core Web Vitals / PageSpeed check** — the site now carries scroll-reveal animations, GA4, multiple JSON-LD blocks, and 15+ gallery images; worth a one-time PageSpeed Insights pass to confirm none of that is dragging mobile load time, especially since GSC is already tracking indexing.
+- **Google Business Profile listing** for the Siddharth Vihar/Ghaziabad address already on file (Udyam registration) — helps local + branded search ("Shri Adishakti Prakashan") show a verified map/trust panel, low effort since the address and phone are already public on the Contact page.
+- **WhatsApp community/broadcast list** for daily mantra or new-release announcements — lighter than a full community platform, uses the WhatsApp number already wired into the order flow.
+
+**Status:** ideas only, nothing changed on the live or working-copy site. Suraj to pick which (if any) to prioritize next.
+
+---
+
+## Approved build list — 17 Jul 2026 — NOTED ONLY, build not started yet (Suraj said: "abhi build nahi karna hai sirf .md file update karni hai")
+
+Suraj reviewed the suggestions above and said "sab add kar de" (add everything) plus two more items of his own. Capturing the full approved scope here first, before any code work begins, per his explicit instruction to only update this file for now.
+
+**New items from Suraj (not from either list above):**
+1. **Floating WhatsApp contact button** ("jaise 'ask 7AM' aur whatsapp app for contact ka button") — a dedicated floating WhatsApp icon/button for direct contact, in the spirit of the simple punchy "DM 'MORNING'" CTA pattern used on the 7AM & Realtime CFO™ side. Note: the site already has a floating `<a href="contact.html" class="float-inquiry">🙏 पूछताछ करें</a>` button (bottom-right, all pages) — but it links to the Contact page, not a direct WhatsApp chat. This request is for a real `wa.me/917011283542` deep-link floating button (possibly alongside, possibly replacing/upgrading the existing one) — needs a decision on whether to keep both or merge into one when build starts.
+2. **Combo bundle — pricing specified:** Ebook combo (all 3 books) = **₹699** (vs ₹747 buying separately at ₹249×3), Paperback combo (all 3 books) = **₹1999** (vs ₹2,397 separately at ₹799×3). Two new Razorpay Payment Links to be created (Standard type, same no-bank/card-touch method as the existing 6 links), then a combo option/card added to `granth-sangrah.html` and the newsletter section of `index.html`.
+
+**Confirmed from my own suggestion list (Section above) — all approved, "sab add kar de":**
+- Real testimonial collection form ("अपना अनुभव साझा करें"), linked from the WhatsApp order-confirmation message, to gradually replace the honestly-labeled placeholder reflections on the homepage.
+- "आज का श्लोक" (verse of the day) rotating widget on the homepage.
+- PWA / Add to Home Screen (manifest + service worker + icons).
+- Short audio clips of the samarpan shlokas / a stotra sample — **flag:** this needs Suraj's own recorded voice; I cannot generate or fabricate his voice, so this step is blocked on him supplying audio files whenever build starts.
+- About page deepened with the personal 1983–2021 journey, written in spiritual (not corporate/resume) tone — IVF/egg-donation detail stays excluded per the standing privacy rule.
+- One-time PageSpeed Insights / Core Web Vitals check (research, no account/permission needed).
+- Google Business Profile listing for the Siddharth Vihar/Ghaziabad address — **flag:** creating an account/listing isn't something I do on a user's behalf; when build starts I can draft all the listing content (name, category, description, hours) for Suraj to paste in himself during signup/verification (postcard or phone OTP only he can complete).
+
+**Not started — this section is a scope record only.** When Suraj gives the go-ahead to build, work through in roughly this order: (1) combo Razorpay links + combo card — quick win, (2) WhatsApp floating button, (3) testimonial form + आज का श्लोक widget, (4) About page story, (5) PWA, (6) PageSpeed check, (7) audio clips once Suraj supplies recordings, (8) Google Business Profile content draft for Suraj to submit himself.
+
+**UI spec refinement — language switcher (added same day, still noted only, not built):** Suraj shared a screenshot of a `<select>`-style dropdown (English highlighted, Hindi below it) and said explicitly this dropdown pattern is NOT what he wants. Instead: **two separate, always-visible buttons side by side** — "English" and "Hindi" (हिंदी) as two distinct clickable buttons next to each other, not a dropdown. This replaces the current single toggle button in the header (`<button class="lang-toggle">EN</button>`, which flips between showing "EN" and "हिं" as one button). New spec: both language names visible at all times as two separate buttons, with the currently-active language visually highlighted/pressed-state, and clicking the other one switches immediately (same underlying `applyLang('en'|'hi')` mechanism already in `assets/js/main.js`, just a UI/markup change from one toggle button to two buttons in a button-group). Applies wherever the current lang-toggle button appears (header, all pages).
+
+---
+
+## Reference review #2 — "what would a world-best, ultra-premium book publisher site have" — 17 Jul 2026 — research only, NOT built
+
+Suraj asked, in general terms, what an ultra-premium ("premium se bhi premium") book publisher website should have. Browsed two real luxury/collector publisher sites for grounding — **taschen.com** (art-book publisher, books photographed and sold as luxury objects, price range £15 to £4,500, SUMO/XL/XXL size tiers, numbered Art Editions with certificates, an accessibility-adjustment widget bottom-left, minimal 5-item nav, full-bleed lifestyle photography, one-line poetic headlines like "Your Library of Japan Awaits" instead of generic hero copy) and **foliosociety.com** (illustrated collector hardcovers, nav includes New Arrivals / Collections / Limited Editions / Discover / News & Blog — curation and editorial content treated as first-class nav items, not afterthoughts). Recommendations below translate their luxury-secular-publishing patterns into our devotional-publishing context — nothing built, ideas only.
+
+**Visual/brand — the biggest lever, costs nothing but craft:**
+- Photograph the physical books as objects, not flat cover scans — angled on a wooden/stone surface with soft directional light, maybe with a diya or tulsi leaf styled next to it, the way Taschen shoots books propped open on an easel. This single change (professional object photography vs. flat cover images) is most of what makes a site feel "premium" — more than any code feature.
+- Poetic one-line section headlines instead of generic labels — e.g. instead of "स्वीकृत ग्रंथ" as a section header, something like "माँ सीता की आँखों से — एक नई दृष्टि" as the actual hero headline (we already do a version of this on book pages; extend the same voice to section headers site-wide).
+- Generous negative space, one hero image at a time, restrained nav (Taschen's top nav is 5 words) — our current nav (7 items) is already close to this; resist adding more top-level items as the catalogue grows, push new pages into "अन्य"/footer instead.
+
+**Product presentation:**
+- Numbered/limited spiritual editions — e.g. first 108 (a sacred number) hardcover copies of a new ग्रंथ individually numbered, "आपकी प्रति क्रमांक 37/108" printed on an insert — mirrors Taschen's numbered Art Editions but reframed around sacred numerology (108, 51, 9) instead of scarcity-for-luxury's-sake.
+- Size/edition tiers already partly exist (Paperback/Ebook); a future hardbound "संग्रहणीय संस्करण" (collector's hardbound, slipcase) tier for SAP-001/002/003 once volume justifies it — same idea as Taschen's Regular/XL/SUMO tiers, applied honestly at our scale (not fabricating scarcity we don't have).
+- The already-noted "Look Inside" flip-preview (Section: Feature request, above) is exactly this category of feature — both premium sites let you page through before buying.
+
+**Editorial/content as identity, not decoration:**
+- Folio Society treats "Discover" and "News & Blog" as top-level nav, same weight as "Books" — validates our own blog + पाठ-सूची pages; consider surfacing 2-3 rotating blog articles directly on the homepage (not just a link) so editorial content reads as core identity, not an add-on.
+- A short "क्यों यह ग्रंथ" (why this scripture, in the founder's own voice) note per book — ties to the About-page-deepening idea already logged above; premium publishers always surface the human/editorial hand behind the object, not just the product spec table.
+
+**Trust & craft signals:**
+- Taschen's accessibility widget (bottom-left icon, font-size/contrast controls) — reinforces the font-size/reading-accessibility idea already logged in "My own suggestions" above; premium sites treat accessibility as a visible trust signal, not just a legal checkbox.
+- Explicit paper/printing/binding notes on the spec table (we already show SAP codes, page count, size) — could add one line on paper quality or printing process once that information is confirmed, the way luxury publishers always name-check their paper stock and binding method as part of the object's story.
+
+**Not relevant at our scale — skip:**
+- Full luxury pricing tiers (£1,500–£4,500 art editions), physical retail "Stores" nav, subscription book clubs — these depend on a much larger back-catalogue and production budget than a 3-book (growing to 12) single-author devotional press; noting only so the gap is a conscious choice, not an oversight.
+
+**Status:** research/comparison only, nothing changed on the live or working-copy site.
+
+---
+
+## Decisions confirmed by Suraj — 18 Jul 2026 (answered in Suraj_Queries_Requirements_17Jul2026.docx, on his OneDrive)
+
+Suraj filled in answers directly inside the queries doc (`D:\OneDrive\00 Maa\03. Maa Sampurn Sangrah\Shri Adishakti Prakashan Website Supporting\Suraj_Queries_Requirements_17Jul2026.docx`). Captured here before any build starts.
+
+**1. Phase 10 bilingual nav fix:** GitHub push method confirmed (direct GitHub push is fine going forward, not just web-upload — "jaise 7AM site kiya tha"). **BUT Suraj flagged "tabs thik nahi hai, confusion hai"** — some tab-related confusion with the langfix — he'll send a screenshot before this is pushed. **Do not push langfix.zip until that screenshot arrives and confusion is resolved.**
+
+**2. WhatsApp button:** Convert the existing "🙏 पूछताछ करें" floating button directly into a WhatsApp deep-link (1 button, not 2). Number stays +91-7011283542. **Email to update everywhere on site: surajkumarlohani@gmail.com.**
+Prefilled message — Hindi (Devanagari): "Jai Maa Ambe, मुझे एक रचना के बारे में पूछना है।" — English: "Jai Maa Ambe, I'd like to ask about a rachna." (keep "Jai Maa Ambe" untranslated in both).
+**Site-wide terminology rule (important, not yet swept): the word "ग्रंथ/granth" must NOT appear anywhere on the site — replace with "रचना/rachna" everywhere (nav, meta descriptions, book pages, JSON-LD, alt text, etc.). "मैं ग्रंथ नहीं बेच रहा" — this needs a dedicated full-site find-and-replace pass, not just the WhatsApp message.**
+**"Ask Nimitt" — a separate new feature (not the WhatsApp button) — is being built alongside this: a 2000+ question FAQ/knowledge base.** (This matches the `faq_master.json` — currently 2,155 unique Q&A across 32 categories — built earlier this session. Confirmed this is the intended use.)
+
+**3. Combo bundle:** Name — "त्रिरचना संग्रह" (Teerachna Sangrah) instead of "त्रिग्रंथ संग्रह". Show discount (MRP struck through, offer price shown). **Pricing correction: Ebook combo = ₹649 (not ₹699 as earlier drafted), Paperback combo = ₹1,999 (confirmed).**
+
+**4. Language switcher:** Two separate buttons, labelled "English" / "हिंदी" — confirmed, matches earlier UI spec note.
+
+**5. About page — personal journey:** Approved, spiritual tone, IVF/egg-donation excluded (as always). Draft to be shown to Suraj for approval before going into the working copy (sensitive section). **Checked `Suraj_LinkedIn_Content_Bible.pdf` and `Resume/LinkedIn Profile.docx` on his OneDrive for IVF/egg-donation text to redact — neither file contains it; Story 16 (Eshansh) in the Content Bible is already written clean (platelets emergency / faith angle only). The detail exists only as a private note in assistant memory, not in any file — nothing to redact on disk.**
+
+**6. Razorpay:** Suraj will log in himself when needed (Chrome/Gmail session already fine); assistant only fills the payment-link creation form.
+
+**7. Google Forms (testimonial form):** Use the same Google account as the SAP Orders sheet/Apps Script. **Important: the testimonial form (and whatever else uses a Google Form) must NOT open in a separate window/tab — both need to be embedded within the website itself (iframe or equivalent), not link out.**
+
+**8. GitHub:** Direct GitHub push confirmed as the deployment method going forward (faster than web-upload interface), same as how the 7AM site was deployed.
+
+**9. Samarpan shloka audio:** Suraj asked what exactly he needs to provide. Answer given: a 30–60 second recording, own voice, reciting the samarpan shlokas already on the book pages; phone voice-recorder is fine (mp3/m4a); can send via chat upload or WhatsApp/email whenever convenient — no rush, this step stays blocked until then.
+
+**10. PWA app-icon:** Current 'अ' gol brand-mark rejected — needs a new design. Assistant to suggest options when this item comes up in the build order (item 5).
+
+**11. Google Business Profile:** Suraj will create/verify the account himself, starting now. Assistant to prepare the full listing content draft (name, category, description, hours, address) for him to paste in.
+
+**Build order:** confirmed as-is, no reordering — (1) combo Razorpay links + combo card, (2) WhatsApp floating button, (3) testimonial form + आज का श्लोक widget, (4) About page personal journey, (5) PWA, (6) PageSpeed check, (7) audio clips, (8) Google Business Profile content draft.
+
+**Status: decisions logged only, build not yet started — awaiting Suraj's go-ahead to begin with item 1.**
+
+---
+
+## Build started — 18 Jul 2026 — items 1 & 2 drafted (local working copy only, nothing pushed)
+
+Suraj said "1. bana do / 2. bana do" + separately asked for Ask Nimitt (the FAQ knowledge base) to be fully bilingual. All three done as local drafts in `/tmp/sap_audit/build1/`; nothing pushed to GitHub/live site (per standing rule on public-content changes).
+
+**Item 1 — त्रिरचना संग्रह combo:**
+- New combo card added to `granth-sangrah.html` (`id="combo"`), plus a promo line in `index.html`'s newsletter section linking to it.
+- Paperback: ₹2,397 struck through → ₹1,999 (₹398 की बचत). Ebook: ₹747 struck through → ₹649 (₹98 की बचत). Matches confirmed pricing exactly.
+- CTA currently goes to WhatsApp order (pre-filled message) as a placeholder — **2 Razorpay Payment Links still need to be created** (assistant fills the form once Suraj is logged in, per decision #6).
+- New CSS added to `assets/css/style.css`: `.combo-card`, `.tag-chip.combo`, `.price-mrp`, `.price-offer`, `.save-chip`.
+- Screenshots shown to Suraj for review (hi + en render identical since combo copy is Hindi-only, matching the site's existing single-language-first book-card convention).
+
+**Item 2 — WhatsApp floating button:**
+- The old `<a href="contact.html" class="float-inquiry">🙏 पूछताछ करें</a>` (present on all 36 pages except contact.html) converted to a `wa.me/917011283542` deep-link across all 36 files (root pages + `blog/*` + `404.html`, all three href variants: `contact.html`, `../contact.html`, `/contact.html`).
+- Label now bilingual via `data-i18n-hi/en` spans: "🙏 पूछताछ करें" / "🙏 Ask Us".
+- Prefilled WhatsApp message is language-aware — Hindi: "Jai Maa Ambe, मुझे एक रचना के बारे में पूछना है।"; English: "Jai Maa Ambe, I'd like to ask about a rachna." ("Jai Maa Ambe" kept untranslated in both, per decision).
+- Implementation: each anchor now carries `data-wa-hi`/`data-wa-en` full wa.me URLs; `assets/js/main.js`'s `applyLang()` function updated to set `href` from the correct attribute on load and on every toggle click — verified working via headless-browser check (href swaps correctly, visible label swaps correctly) in both directions.
+- Screenshots of both language states shown to Suraj for review.
+
+**Ask Nimitt — bilingual FAQ dataset (Suraj's separate request: "sari ask nimitt hindi aur english dono mein chahiye, jab visitor english select kare to accordingly hona chahiye"):**
+- All 2,404 Hindi Q&A pairs from `faq_master.json` (built earlier this session, 33 categories) translated into English via 18 parallel translation passes (one per category-group, ~120-160 items each), using a shared terminology glossary derived from the site's own existing bilingual copy (Maa Ambe, Adishakti Bhagwati Maa Ambe, Bhagwan Shiva, Sitayan/Radhavtaram/Mahasati Gauri, Kaand/Khand kept transliterated, निमित्त → "instrument", etc.) so all 18 batches stay terminologically consistent.
+- Consolidated into `/home/claude/output/faq_master_bilingual.json` — schema per item: `{category, question_hi, answer_hi, question_en, answer_en}`.
+- Verified programmatically: 2,404/2,404 items, every `question_hi`/`answer_hi` matches the original `faq_master.json` byte-for-byte (zero drift), every category count matches, zero empty/malformed English fields.
+- **Not yet wired into any page** — this is the data layer only. The actual "Ask Nimitt" UI (how it's displayed/searched on the site, and how it reads the current `body.lang-en` state to show hi vs en fields) still needs to be built once Suraj confirms where/how it should appear (standalone page? modal? integrated into `search.html`?).
+
+**Deployment status:** none of this (combo card, WhatsApp button, bilingual FAQ data) has been pushed to GitHub or the live site. All local, in `/tmp/sap_audit/build1/` and `/home/claude/output/`. Files delivered to Suraj via chat for review (screenshots + `faq_master_bilingual.json`).
+
+**Open questions for Suraj:** (a) combo card/WhatsApp button — approved as shown, or changes needed? (b) Ask Nimitt UI — where/how should it live on the site (new page vs. integrated into existing `search.html`)? (c) langfix.zip (खोजें toggle) + full nav/footer translation + two-separate-button language switcher — still on hold, no go-ahead given yet to push anything live.
+
+---
+
+## "sab kar de, sabki permission hai" — 18 Jul 2026 — nav/footer translation + language switcher + Ask Nimitt page built (local, NOT pushed — credential blocker below)
+
+Suraj gave blanket permission to proceed with everything previously listed as pending. Built all three, verified with headless-browser screenshots in both languages:
+
+**1. Full nav + footer Hindi translation (all 38 files):** Home→मुखपृष्ठ, About Us→हमारे बारे में, Books→रचनाएँ (used रचना per the confirmed ग्रंथ→रचना direction, not a full sitewide sweep — that remains separately flagged/undone), Blog→ब्लॉग, Gallery→गैलरी, Contact Us→संपर्क करें, plus footer: Quick Links→त्वरित लिंक, Catalogue→सूची, FAQ→सामान्य प्रश्न, Privacy Policy→गोपनीयता नीति, Terms & Conditions→नियम एवं शर्तें, Refund Policy→धनवापसी नीति. All via `data-i18n-hi/en` spans, terminology cross-checked against strings already used elsewhere on the site (e.g. "धनवापसी नीति" was already used inline in faq.html — confirms consistency). खोजें/Search (Phase 10) unaffected/still correct.
+
+**2. Two-button language switcher:** Replaced the single `<button class="lang-toggle">EN</button>` with a `.lang-switch` group of two always-visible buttons ("हिंदी" / "English"), active one highlighted, per Suraj's earlier UI-spec correction (no dropdown, two distinct buttons). `main.js` `applyLang()` rewritten to toggle `.active` on both buttons instead of swapping button text; clicking either button sets that language directly (no more toggle-only behavior).
+
+**3. Ask Nimitt — new bilingual knowledge-base page (`ask-nimitt.html`):**
+- New dedicated page (not merged into `search.html`, which serves a different purpose — site-content search via `assets/data/search-index.json`, a different schema). Reachable from footer Quick Links (all 38 files) + a new homepage promo card (`index.html`, after the "तीन स्तम्भ" section).
+- Loads `assets/data/ask-nimitt.json` (the 2,404-item bilingual dataset built earlier this session) client-side via `fetch`.
+- Features: live search box (filters across hi+en question/answer text, 180ms debounce), 33 category filter chips (Hindi/English labels, ordered by frequency, all built from a `CAT_LABELS` map), accordion-style results (reusing the site's existing `.faq-list/.faq-item/.faq-q/.faq-a` classes from `faq.html` for visual consistency), pagination via "Load More" (20 at a time, avoids rendering all 2,404 DOM nodes at once), bilingual result count.
+- Bug caught and fixed during testing: the result-count text was originally computed via a JS `isEn()` branch at filter-time only, so it didn't update if you switched language *without* re-searching. Fixed by making the count itself a `data-i18n-hi/en` span pair like everything else on the site, so it's purely CSS-driven and always correct regardless of when the toggle was clicked.
+- New CSS added: `.nimitt-search-wrap/.nimitt-search-box/.nimitt-cats/.nimitt-cat-chip/.nimitt-count/.nimitt-cat-tag`, plus `.lang-switch/.lang-btn` for item 2.
+- Verified via headless-browser: default load (2404, 34 chips incl. "All"), search "नवरात्रि" → 116, search "hanuman chalisa" in EN mode → 10, category filter "Hanuman Ji" in EN mode → 5, accordion expand/collapse, full EN/HI round-trip all correct.
+
+**Combo card (Item 1, built earlier this session) — re-verified:** unaffected by this pass, still working correctly on `granth-sangrah.html`.
+
+**Deployment status — BLOCKED, nothing pushed:**
+- `gh auth status` shows the session's `GH_TOKEN` is invalid — direct `git push` is not currently possible from this environment despite decision #8 confirming it as the go-forward method.
+- No browser (`claude-in-chrome`) tab group is currently connected either, so the GitHub web-upload method (used for Phases 8–9 and the original repo creation) isn't available right now.
+- Packaged everything as `sap-premium-build1-full-update.zip` (47 files: all 38 HTML pages + `assets/css/style.css` + `assets/js/main.js` + new `assets/data/ask-nimitt.json`) — ready to upload the same way `sap-premium-build1-langfix.zip` was prepared. Delivered to Suraj via chat along with review screenshots.
+- **Next step needs one of:** (a) Suraj uploads the zip himself via GitHub's web interface, or (b) Suraj opens/connects Chrome so the assistant can drive the same web-upload flow used in Phases 8–9, or (c) Suraj provides a fresh working `GH_TOKEN` for direct `git push`.
+
+**Still open / unchanged:** Razorpay combo Payment Links (needs Suraj logged in — assistant fills the form only), and the full sitewide ग्रंथ→रचना terminology sweep (separately flagged, not part of this pass).
