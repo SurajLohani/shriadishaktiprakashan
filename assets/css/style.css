@@ -470,6 +470,13 @@ footer.site-footer {
   margin-bottom: 10px;
 }
 .footer-brand p { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
+.footer-brand-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.footer-brand-head .name { margin-bottom: 0; }
+.footer-logo {
+  width: 34px; height: 34px; border-radius: 50%;
+  object-fit: cover; display: block; flex-shrink: 0;
+  border: 1px solid rgba(230,190,111,0.4);
+}
 
 .footer-col h4 {
   color: var(--gold-300);
@@ -603,6 +610,11 @@ footer.site-footer {
 .contact-info-card h3 { color: var(--gold-300); margin-top: 0; }
 .contact-info-card .line { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
 .contact-info-card .line .ic { color: var(--gold-400); font-size: 1.1rem; }
+.contact-info-card .line .ic-logo {
+  width: 22px; height: 22px; border-radius: 50%;
+  object-fit: cover; display: block; flex-shrink: 0;
+  border: 1px solid rgba(230,190,111,0.4); margin-top: 2px;
+}
 
 /* ---------------- Filter tabs (books page) ---------------- */
 .filter-row {
