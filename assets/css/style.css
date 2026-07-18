@@ -539,8 +539,12 @@ footer.site-footer {
   border: 1px solid rgba(230,190,111,0.35);
 }
 .float-ask .float-icon {
-  background: rgba(230,190,111,0.14);
-  border: 1.5px solid var(--gold-400);
+  background: radial-gradient(circle at 35% 30%, var(--flame-400), var(--flame-600) 60%, var(--flame-800) 100%);
+  border: 1.5px solid var(--gold-500);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: Georgia, 'Noto Sans Devanagari', serif;
 }
 
 .float-inquiry {
