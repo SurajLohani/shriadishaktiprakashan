@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var message = document.getElementById('cf-message').value;
       var subject = encodeURIComponent('Website Inquiry from ' + name);
       var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = 'mailto:shikha@shriadishaktiprakashan.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:surajkumarlohani@gmail.com?subject=' + subject + '&body=' + body;
     });
   }
 });

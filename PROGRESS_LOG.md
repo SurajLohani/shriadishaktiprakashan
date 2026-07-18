@@ -390,3 +390,25 @@ Suraj said "chalo github token generate karte hai google chrome se" — walked t
 **Now actually resolved / no longer open:** langfix (खोजें), full nav/footer translation, two-button language switcher, Ask Nimitt page, combo card, WhatsApp button — all LIVE.
 
 **Still open:** Razorpay combo Payment Links (needs Suraj logged in), full sitewide ग्रंथ→रचना terminology sweep (separately flagged), build-order items 3–8 (testimonial form + आज का श्लोक widget, About page personal journey, PWA, PageSpeed check, audio clips, Google Business Profile draft).
+
+---
+
+## CACHE-BUST FIX + 4-ITEM FOLLOW-UP — 18 Jul 2026
+
+**Cache-bust fix (pushed as `acf98e0`):** Suraj reported "english mein to aa hi nahi kuch" — root cause was GitHub Pages' Fastly CDN serving stale `style.css`/`main.js` after the previous push (origin was correct, confirmed via cache-busted requests). Fixed by adding `?v=20260718b` to every CSS/JS `<link>`/`<script>` reference across all 38 HTML files. Verified live via claude-in-chrome: English toggle now correctly switches nav, tagline, testimonials, CTA, WhatsApp button.
+
+**Suraj's 4-item follow-up request**, all completed in this pass:
+
+1. **Sitewide ग्रंथ→रचना terminology sweep (the long-flagged item, finally done).** Base find/replace (ग्रंथों→रचनाओं, ग्रंथ→रचना) across all 38 HTML files (308 base occurrences), followed by a manually-authored grammar correction pass (~40 targeted phrase fixes) to handle Hindi gender/plural agreement that a blind replace would have broken — e.g. bare masculine-plural ग्रंथ needed रचनाएँ (feminine plural marker), adjectives/verbs agreeing with ग्रंथ needed to flip to feminine (नया→नई, जुड़े→जुड़ी, करता है→करती है, होता है→होती है, चुका है→चुकी है, etc.). Verified zero `ग्रंथ` occurrences remain and no leftover masculine-verb/feminine-noun mismatches via grep sweep. File names/URLs (e.g. `granth-sangrah.html`) were deliberately left unchanged — only Devanagari display text was touched — to avoid breaking existing links; flagged to Suraj that a URL rename would need 301 redirects if he wants that later.
+
+2. **All book descriptions (and related content) made bilingual.** Previously only nav/footer/hero were bilingual; large chunks of body content were Hindi-only. Fanned out 9 parallel subagents, one per page: `sitayan.html` (148 new hi/en pairs, including the full 86-chapter TOC), `radhavtaram.html` (161 pairs, 93 chapters), `mahasati-gauri.html` (183 pairs, 85 chapters), `granth-sangrah.html` (35 pairs — combo bundle, accepted/upcoming book cards), `catalogue.html` (38 pairs — table headers/cells), `index.html` (84 pairs — book-card descriptions, feature cards, testimonials), `about.html` (24 pairs — founder story, Nimit philosophy; confirmed no IVF/private content present), `sampadan-prakriya.html` (22 pairs — 5-step editorial process), `faq.html` (24 pairs — all 12 accordion Q&As; fixed 2 pre-existing nested-span bugs). Verified sitewide: every file's `data-i18n-hi` and `data-i18n-en` counts match exactly (no orphaned spans), and all 39 changed files parse cleanly.
+
+3. **"Ask Nimitt" nav link — root cause of "kyu nahi aa raha".** It only ever existed in the footer Quick Links (buried, easy to miss) — never in the main nav bar. Added `निमित्त से पूछें` / `Ask Nimitt` to the main `<nav>` on all 38 pages (between Gallery and Contact Us), handled 3 different relative-path prefixes (`""`, `../`, `/`) and the `contact.html`/`ask-nimitt.html` "active"-class edge cases (`contact.html`'s own nav item and `ask-nimitt.html`'s own nav item needed manual fixing since their `class="active"` attribute didn't match the base insertion regex). Caught and fixed a duplicate-link bug where the insertion script also matched the footer's Contact-Us `<li>`, doubling the footer's existing Ask Nimitt entry — de-duped back to one per footer. Verified: every page now has exactly one Ask Nimitt link in nav + exactly one in footer.
+
+4. **Email swept sitewide.** `shikha@shriadishaktiprakashan.com` → `surajkumarlohani@gmail.com` — 113 occurrences across all HTML files plus the contact-form `mailto:` handler in `assets/js/main.js`. Verified zero old-email occurrences remain and 113 new-email occurrences present.
+
+**Verification before deploy:** local Playwright screenshots (Hindi + English) of homepage and `sitayan.html` confirmed nav Ask Nimitt link, रचना terminology, and full English book descriptions all rendering correctly.
+
+**Deployed live** via the existing `sap-site-deploy` token (still active from the previous session — not yet deleted, per Suraj's pending decision) — 39 files changed (38 HTML + `main.js`).
+
+**Still open:** Razorpay combo Payment Links (needs Suraj logged in), decision on whether to keep/delete the `sap-site-deploy` token, build-order items 3–8 (testimonial form + आज का श्लोक widget, About page personal-journey draft approval, PWA, PageSpeed check, audio clips, Google Business Profile draft). Optional follow-up not yet done: bilingual TOC/description treatment for the remaining path-suchi pages (`navratri-path-suchi.html`, `shravan-path-suchi.html`) and blog articles, which were not in this pass's explicit scope.
