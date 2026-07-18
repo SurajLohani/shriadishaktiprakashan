@@ -576,6 +576,24 @@ footer.site-footer {
   .float-icon { width: 30px; height: 30px; font-size: 0.95rem; }
 }
 
+/* ---------------- Hero language-availability note ---------------- */
+.lang-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid rgba(230,190,111,0.35);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.07);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.85);
+  max-width: 640px;
+}
+.lang-note .ic { flex-shrink: 0; font-size: 1rem; }
+.lang-note a { color: var(--flame-300); text-decoration: underline; font-weight: 600; }
+
 /* ---------------- Contact Map ---------------- */
 .map-section { margin-top: 40px; }
 .map-section h3 { text-align: center; margin-bottom: 16px; }
