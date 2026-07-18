@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
       var url = lang === 'en' ? a.getAttribute('data-wa-en') : a.getAttribute('data-wa-hi');
       if (url) a.setAttribute('href', url);
     });
+    document.querySelectorAll('[data-i18n-hi-placeholder]').forEach(function (el) {
+      var ph = lang === 'en' ? el.getAttribute('data-i18n-en-placeholder') : el.getAttribute('data-i18n-hi-placeholder');
+      if (ph) el.setAttribute('placeholder', ph);
+    });
     try { localStorage.setItem('sap-lang', lang); } catch (e) {}
   }
   applyLang(savedLang);

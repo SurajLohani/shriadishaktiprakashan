@@ -17,12 +17,11 @@
 <meta name="twitter:description" content="रचनाओं, कथाओं और लेखों में खोजें — श्री आदिशक्ति प्रकाशन।">
 <meta name="twitter:image" content="https://shriadishaktiprakashan.com/assets/img/logo-full.jpg">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20260718d">
+<link rel="stylesheet" href="assets/css/style.css?v=20260718e">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HGVERH7T1"></script>
 <script>
@@ -39,7 +38,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="index.html" class="brand">
-      <div class="brand-mark">अ</div>
+      <div class="brand-mark"><img src="assets/img/logo-mark.png" alt="श्री आदिशक्ति प्रकाशन"></div>
       <div class="brand-text">
         <div class="name">श्री आदिशक्ति प्रकाशन</div>
         <div class="tagline"><span data-i18n-hi>रचना · भक्ति · प्रकाशन</span><span data-i18n-en>Scriptures · Devotion · Publishing</span></div>
@@ -69,21 +68,21 @@
 
 <section class="hero hero-sm">
   <div class="hero-inner">
-    <span class="pill-badge">खोजें</span>
-    <h1>रचनाओं और <span class="accent">कथाओं में खोजें</span></h1>
-    <p class="lead">रचना, अध्याय-विषय और ब्लॉग कथाओं में तुरंत खोजें।</p>
+    <span class="pill-badge"><span data-i18n-hi>खोजें</span><span data-i18n-en>Search</span></span>
+    <h1><span data-i18n-hi>रचनाओं और </span><span data-i18n-en>Search Works and </span><span class="accent"><span data-i18n-hi>कथाओं में खोजें</span><span data-i18n-en>Stories</span></span></h1>
+    <p class="lead"><span data-i18n-hi>रचना, अध्याय-विषय और ब्लॉग कथाओं में तुरंत खोजें।</span><span data-i18n-en>Instantly search works, chapter topics and blog stories.</span></p>
   </div>
 </section>
 
 <section>
   <div class="container">
     <div class="filter-row">
-      <input type="text" id="site-search" placeholder="जैसे: सीता, राधा, नवरात्रि, शक्ति पीठ…" autofocus style="padding:12px 18px; border-radius:30px; border:1px solid var(--gold-400); font-family:var(--font-hi); width:100%; max-width:420px; font-size:1.05rem;">
+      <input type="text" id="site-search" placeholder="जैसे: सीता, राधा, नवरात्रि, शक्ति पीठ…" data-i18n-hi-placeholder="जैसे: सीता, राधा, नवरात्रि, शक्ति पीठ…" data-i18n-en-placeholder="e.g. Sita, Radha, Navratri, Shakti Peeth…" autofocus style="padding:12px 18px; border-radius:30px; border:1px solid var(--gold-400); font-family:var(--font-hi); width:100%; max-width:420px; font-size:1.05rem;">
     </div>
     <div class="filter-row" id="type-tabs">
-      <span class="filter-tab active" data-type="all">सभी</span>
-      <span class="filter-tab" data-type="book">रचना</span>
-      <span class="filter-tab" data-type="blog">ब्लॉग कथाएँ</span>
+      <span class="filter-tab active" data-type="all"><span data-i18n-hi>सभी</span><span data-i18n-en>All</span></span>
+      <span class="filter-tab" data-type="book"><span data-i18n-hi>रचना</span><span data-i18n-en>Books</span></span>
+      <span class="filter-tab" data-type="blog"><span data-i18n-hi>ब्लॉग कथाएँ</span><span data-i18n-en>Blog Stories</span></span>
     </div>
     <p id="search-status" style="color:var(--text-muted,#777); margin:14px 0;"></p>
     <div class="grid grid-3" id="search-results"></div>
@@ -123,14 +122,14 @@
   function render(list, query){
     resultsEl.innerHTML = '';
     if (!query) {
-      statusEl.textContent = 'ऊपर टाइप करके रचना या ब्लॉग कथा खोजें।';
+      statusEl.innerHTML = '<span data-i18n-hi>ऊपर टाइप करके रचना या ब्लॉग कथा खोजें।</span><span data-i18n-en>Type above to search works or blog stories.</span>';
       return;
     }
     if (list.length === 0) {
-      statusEl.textContent = '"' + query + '" के लिए कोई परिणाम नहीं मिला।';
+      statusEl.innerHTML = '<span data-i18n-hi>"' + esc(query) + '" के लिए कोई परिणाम नहीं मिला।</span><span data-i18n-en>No results found for "' + esc(query) + '".</span>';
       return;
     }
-    statusEl.textContent = list.length + ' परिणाम मिले।';
+    statusEl.innerHTML = '<span data-i18n-hi>' + list.length + ' परिणाम मिले।</span><span data-i18n-en>' + list.length + ' results found.</span>';
     list.forEach(function(item){
       var card = document.createElement('a');
       card.href = item.url;
@@ -140,9 +139,9 @@
       card.innerHTML =
         '<div class="blog-cover">' + iconFor(item.type) + '</div>' +
         '<div class="card-body">' +
-          '<span class="tag-chip">' + (item.type === 'book' ? 'रचना' : 'ब्लॉग') + '</span>' +
-          '<h3>' + hl(item.title_hi, query) + '</h3>' +
-          '<p>' + hl(item.excerpt_hi, query) + '</p>' +
+          '<span class="tag-chip"><span data-i18n-hi>' + (item.type === 'book' ? 'रचना' : 'ब्लॉग') + '</span><span data-i18n-en>' + (item.type === 'book' ? 'Book' : 'Blog') + '</span></span>' +
+          '<h3><span data-i18n-hi>' + hl(item.title_hi, query) + '</span><span data-i18n-en>' + hl(item.title_en || item.title_hi, query) + '</span></h3>' +
+          '<p><span data-i18n-hi>' + hl(item.excerpt_hi, query) + '</span><span data-i18n-en>' + hl(item.excerpt_en || item.excerpt_hi, query) + '</span></p>' +
         '</div>';
       resultsEl.appendChild(card);
     });
@@ -166,7 +165,7 @@
     .then(function(r){ return r.json(); })
     .then(function(data){
       indexData = data;
-      statusEl.textContent = 'ऊपर टाइप करके रचना या ब्लॉग कथा खोजें।';
+      statusEl.innerHTML = '<span data-i18n-hi>ऊपर टाइप करके रचना या ब्लॉग कथा खोजें।</span><span data-i18n-en>Type above to search works or blog stories.</span>';
       var params = new URLSearchParams(window.location.search);
       var qParam = params.get('q');
       if (qParam) {
@@ -175,7 +174,7 @@
       }
     })
     .catch(function(){
-      statusEl.textContent = 'खोज सूची लोड नहीं हो पाई। कृपया पुनः प्रयास करें।';
+      statusEl.innerHTML = '<span data-i18n-hi>खोज सूची लोड नहीं हो पाई। कृपया पुनः प्रयास करें।</span><span data-i18n-en>Could not load the search index. Please try again.</span>';
     });
 
   input.addEventListener('input', function(e){ search(e.target.value); });
@@ -235,9 +234,9 @@
   </div>
 </footer>
 
-<div class="float-stack"><a href="ask-nimitt.html" class="float-ask"><span class="float-icon">अ</span><span class="float-label"><span data-i18n-hi>निमित्त से पूछें</span><span data-i18n-en>Ask Nimitt</span></span></a><a href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%8F%E0%A4%95%20%E0%A4%B0%E0%A4%9A%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AA%E0%A5%82%E0%A4%9B%E0%A4%A8%E0%A4%BE%20%E0%A4%B9%E0%A5%88%E0%A5%A4" target="_blank" rel="noopener" class="float-inquiry" data-wa-hi="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%8F%E0%A4%95%20%E0%A4%B0%E0%A4%9A%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AA%E0%A5%82%E0%A4%9B%E0%A4%A8%E0%A4%BE%20%E0%A4%B9%E0%A5%88%E0%A5%A4" data-wa-en="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20I%27d%20like%20to%20ask%20about%20a%20rachna."><span class="float-icon">💬</span><span class="float-label"><span data-i18n-hi>WhatsApp पर पूछें</span><span data-i18n-en>WhatsApp Us</span></span></a></div>
+<div class="float-stack"><a href="ask-nimitt.html" class="float-ask"><span class="float-icon"><img src="assets/img/logo-mark.png" alt=""></span><span class="float-label"><span data-i18n-hi>निमित्त से पूछें</span><span data-i18n-en>Ask Nimitt</span></span></a><a href="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%8F%E0%A4%95%20%E0%A4%B0%E0%A4%9A%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AA%E0%A5%82%E0%A4%9B%E0%A4%A8%E0%A4%BE%20%E0%A4%B9%E0%A5%88%E0%A5%A4" target="_blank" rel="noopener" class="float-inquiry" data-wa-hi="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%8F%E0%A4%95%20%E0%A4%B0%E0%A4%9A%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%AA%E0%A5%82%E0%A4%9B%E0%A4%A8%E0%A4%BE%20%E0%A4%B9%E0%A5%88%E0%A5%A4" data-wa-en="https://wa.me/917011283542?text=Jai%20Maa%20Ambe%2C%20I%27d%20like%20to%20ask%20about%20a%20rachna."><span class="float-icon">💬</span><span class="float-label"><span data-i18n-hi>WhatsApp पर पूछें</span><span data-i18n-en>WhatsApp Us</span></span></a></div>
 
-<script src="assets/js/main.js?v=20260718d"></script>
+<script src="assets/js/main.js?v=20260718e"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
