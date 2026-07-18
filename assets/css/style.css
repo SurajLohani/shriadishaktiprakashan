@@ -576,6 +576,16 @@ footer.site-footer {
   .float-icon { width: 30px; height: 30px; font-size: 0.95rem; }
 }
 
+/* ---------------- Contact Map ---------------- */
+.map-section { margin-top: 40px; }
+.map-section h3 { text-align: center; margin-bottom: 16px; }
+.map-embed {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.map-embed iframe { display: block; width: 100%; height: 350px; }
+
 /* ---------------- Forms ---------------- */
 .form-card {
   background: var(--white);
