@@ -412,3 +412,21 @@ Suraj said "chalo github token generate karte hai google chrome se" — walked t
 **Deployed live** via the existing `sap-site-deploy` token (still active from the previous session — not yet deleted, per Suraj's pending decision) — 39 files changed (38 HTML + `main.js`).
 
 **Still open:** Razorpay combo Payment Links (needs Suraj logged in), decision on whether to keep/delete the `sap-site-deploy` token, build-order items 3–8 (testimonial form + आज का श्लोक widget, About page personal-journey draft approval, PWA, PageSpeed check, audio clips, Google Business Profile draft). Optional follow-up not yet done: bilingual TOC/description treatment for the remaining path-suchi pages (`navratri-path-suchi.html`, `shravan-path-suchi.html`) and blog articles, which were not in this pass's explicit scope.
+
+---
+
+## FLOATING BUTTON REDESIGN — 18 Jul 2026 (same day, follow-up)
+
+Suraj shared a reference screenshot (from an unrelated project) showing two stacked pill-shaped floating buttons — a dark pill with a clock icon labeled "Ask7AM" and a green pill with a WhatsApp icon labeled "WhatsApp Us" — and asked for the site's floating button to follow that same two-button style.
+
+Previously the site had a single combined floating button (🙏 पूछताछ करें / Ask Us) that just opened WhatsApp. Split it into two separate stacked pill buttons matching the reference layout, using the site's own maroon/gold brand palette instead of the reference's colors:
+- **Ask Nimitt** (top): dark maroon-900 pill, gold-400 text, circular icon badge with gold border, 🙏 icon — links to `ask-nimitt.html`.
+- **WhatsApp Us** (bottom): WhatsApp-green (#25D366) pill, white text, circular icon badge, 💬 icon — same wa.me link/pre-filled message as before, still language-aware via `data-wa-hi`/`data-wa-en` (existing JS logic untouched).
+
+New CSS: `.float-stack` (flex column container, replaces old `.float-inquiry` fixed positioning), `.float-ask`, `.float-icon`, responsive sizing at 640px. Updated the two places that referenced the old `.float-inquiry` selector for fixed positioning/print rules (`body.has-sticky-order`, `@media print`) to target `.float-stack` instead.
+
+Applied across all 38 pages via a regex-based script that preserved each page's exact WhatsApp href/data-wa-hi/data-wa-en values (book pages have book-specific pre-filled WhatsApp messages). `contact.html` didn't have the floating button at all before (0 occurrences) — added it there too for consistency, matching Suraj's "sab jagah" instruction from the earlier request.
+
+Caught during local Playwright verification: the 🕉️ (Om) emoji rendered as a fallback "35"-looking glyph in the headless test browser (missing color-emoji font in that sandbox) — swapped to 🙏 (folded hands), which is the icon already proven to render correctly everywhere on this site, removing the risk entirely rather than trusting an unverified glyph.
+
+Verified: all 38 files have exactly one `.float-stack` block, `data-i18n-hi`/`data-i18n-en` counts still balanced sitewide, HTML parses cleanly, and local Hindi/English screenshots confirm the two-button stack renders correctly in both languages before deploying.

@@ -494,24 +494,68 @@ footer.site-footer {
   color: rgba(255,255,255,0.55);
 }
 
-/* ---------------- Floating inquiry button ---------------- */
-.float-inquiry {
+/* ---------------- Floating action stack (Ask Nimitt + WhatsApp) ---------------- */
+.float-stack {
   position: fixed;
   right: 24px;
   bottom: 24px;
   z-index: 200;
-  background: linear-gradient(135deg, var(--flame-500), var(--flame-600));
-  color: var(--white);
-  padding: 14px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+.float-ask,
+.float-inquiry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 22px 8px 8px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.92rem;
-  box-shadow: 0 10px 26px rgba(122,31,15,0.4);
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+  transition: filter 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.float-ask:hover,
+.float-inquiry:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.float-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
 }
-.float-inquiry:hover { filter: brightness(1.06); }
+
+.float-ask {
+  background: var(--maroon-900);
+  color: var(--gold-400);
+  border: 1px solid rgba(230,190,111,0.35);
+}
+.float-ask .float-icon {
+  background: rgba(230,190,111,0.14);
+  border: 1.5px solid var(--gold-400);
+}
+
+.float-inquiry {
+  background: #25d366;
+  color: var(--white);
+}
+.float-inquiry .float-icon {
+  background: rgba(255,255,255,0.22);
+}
+
+@media (max-width: 640px) {
+  .float-stack { right: 14px; bottom: 14px; gap: 10px; }
+  .float-ask, .float-inquiry { padding: 6px 16px 6px 6px; font-size: 0.82rem; }
+  .float-icon { width: 30px; height: 30px; font-size: 0.95rem; }
+}
 
 /* ---------------- Forms ---------------- */
 .form-card {
@@ -1094,7 +1138,7 @@ footer.site-footer {
   .sticky-order .so-name small { display: none; }
   .sticky-order .btn { padding: 9px 14px; font-size: 0.8rem; }
 }
-body.has-sticky-order .float-inquiry { bottom: 88px; }
+body.has-sticky-order .float-stack { bottom: 88px; }
 
 /* ---------- Satsang guide block (I6) ---------- */
 .guide-block {
@@ -1324,7 +1368,7 @@ mark.search-hl { background: var(--gold-300); color: var(--maroon-900); border-r
 /* ---------- Print styles (catalogue) ---------- */
 @media print {
   header.site-header, .mantra-strip, .festival-strip, footer.site-footer,
-  .float-inquiry, .btn-row, .filter-row, .no-print, .sticky-order, .head-search { display: none !important; }
+  .float-stack, .btn-row, .filter-row, .no-print, .sticky-order, .head-search { display: none !important; }
   section { padding: 10px 0 !important; }
   .hero, .hero.hero-sm { background: none !important; color: #000 !important; padding: 10px 0 !important; }
   .hero h1, .hero .lead { color: #000 !important; }
