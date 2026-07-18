@@ -498,6 +498,7 @@ footer.site-footer {
   font-weight: 700;
 }
 .social-row a:hover { background: var(--flame-500); color: var(--white); border-color: var(--flame-500); }
+.social-row a svg { width: 17px; height: 17px; fill: currentColor; display: block; }
 
 .footer-bottom {
   text-align: center;
