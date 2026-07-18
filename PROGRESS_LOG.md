@@ -373,3 +373,20 @@ Suraj gave blanket permission to proceed with everything previously listed as pe
 - **Next step needs one of:** (a) Suraj uploads the zip himself via GitHub's web interface, or (b) Suraj opens/connects Chrome so the assistant can drive the same web-upload flow used in Phases 8–9, or (c) Suraj provides a fresh working `GH_TOKEN` for direct `git push`.
 
 **Still open / unchanged:** Razorpay combo Payment Links (needs Suraj logged in — assistant fills the form only), and the full sitewide ग्रंथ→रचना terminology sweep (separately flagged, not part of this pass).
+
+---
+
+## LIVE DEPLOYMENT — 18 Jul 2026 — pushed successfully
+
+Suraj said "chalo github token generate karte hai google chrome se" — walked through it live in his connected Chrome (already signed in as @SurajLohani):
+1. GitHub required sudo-mode re-verification (email link) — Suraj completed this himself (identity verification is not something the assistant does on a user's behalf).
+2. Assistant created a new **fine-grained Personal Access Token** (`sap-site-deploy`, expires 17 Aug 2026), scoped to **only** `SurajLohani/shriadishaktiprakashan`, permission `Contents: Read and write` (+ required `Metadata: Read-only`) — minimal scope, not a broad/classic token.
+3. Cloned the live repo fresh with the token, copied over all 42 changed files (40 modified + `ask-nimitt.html` + `assets/data/ask-nimitt.json` new) from `/tmp/sap_audit/build1/`, committed, and ran `git push origin main`. **Push succeeded** (`c80823b..47e81f9 main -> main`) — this resolves the credential blocker noted in the previous entry; direct `git push` now confirmed working end-to-end for this repo.
+4. Verified live: homepage nav/footer + two-button language switcher rendering correctly in both Hindi and English (`shriadishaktiprakashan.com`), `ask-nimitt.html` live and loading its 2,404-question dataset with working search/category filters. **Note:** `assets/css/style.css` served briefly stale from GitHub Pages' CDN cache for a few minutes after push (confirmed via cache-busted request that the new CSS — `.nimitt-cat-chip` etc. — was correctly deployed at origin); this is normal CDN propagation, not a deploy failure, and clears on its own.
+5. `PROGRESS_LOG.md` in the repo itself was also updated with this entry as part of the same push, so the deployed copy stays in sync with the working copy.
+
+**Security note — token left active:** the `sap-site-deploy` token is scoped to this one repo, Contents R/W only, expires in 30 days — low risk, but it's a live credential. Suraj to decide: keep it for future direct pushes (matches decision #8's "direct push going forward" preference), or have the assistant delete it now from Settings → Developer settings → Fine-grained tokens. Not deleted yet — awaiting his call.
+
+**Now actually resolved / no longer open:** langfix (खोजें), full nav/footer translation, two-button language switcher, Ask Nimitt page, combo card, WhatsApp button — all LIVE.
+
+**Still open:** Razorpay combo Payment Links (needs Suraj logged in), full sitewide ग्रंथ→रचना terminology sweep (separately flagged), build-order items 3–8 (testimonial form + आज का श्लोक widget, About page personal journey, PWA, PageSpeed check, audio clips, Google Business Profile draft).
