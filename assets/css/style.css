@@ -594,6 +594,10 @@ footer.site-footer {
 .lang-note .ic { flex-shrink: 0; font-size: 1rem; }
 .lang-note a { color: var(--flame-300); text-decoration: underline; font-weight: 600; }
 
+@media (max-width: 640px) {
+  .lang-note { margin-right: 130px; margin-bottom: 90px; font-size: 0.8rem; }
+}
+
 /* ---------------- Contact Map ---------------- */
 .map-section { margin-top: 40px; }
 .map-section h3 { text-align: center; margin-bottom: 16px; }
