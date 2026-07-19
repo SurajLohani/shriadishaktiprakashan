@@ -871,6 +871,23 @@ body.lang-en { font-family: var(--font-en); }
 .samarpan-block h3 { color: var(--gold-300); margin: 0 0 16px; font-size: 1.15rem; }
 .samarpan-block p { margin: 0 0 10px; line-height: 1.8; }
 .samarpan-block .shloka { font-style: italic; color: var(--gold-300); margin: 18px 0; }
+.samarpan-audio {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.samarpan-audio .sa-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--gold-300);
+  margin-bottom: 10px;
+}
+.samarpan-audio audio {
+  width: 100%;
+  max-width: 420px;
+}
 .aabhar-block {
   max-width: 760px;
   margin: 0 auto;
