@@ -123,6 +123,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ---------- Edition (language) selector for purchase blocks ----------
+  document.querySelectorAll('.edition-select').forEach(function (sel) {
+    var block = sel.closest('.edition-block') || sel.parentElement;
+    var pills = sel.querySelectorAll('.edition-pill');
+    var panels = block ? block.querySelectorAll('.edition-panel') : [];
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var edition = pill.getAttribute('data-edition');
+        pills.forEach(function (p) { p.classList.toggle('active', p === pill); });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('active', panel.getAttribute('data-edition-panel') === edition);
+        });
+      });
+    });
+    // If the page was opened via an "English edition" link (#english-edition or #combo-english),
+    // pre-select the English pill so the visitor doesn't need an extra click.
+    if (block && (block.id === 'english-edition' || block.id === 'combo-english') &&
+        (window.location.hash === '#english-edition' || window.location.hash === '#combo-english')) {
+      var enPill = sel.querySelector('.edition-pill[data-edition="en"]');
+      if (enPill) enPill.click();
+    }
+  });
+
   // ---------- FAQ accordion (D1) ----------
   document.querySelectorAll('.faq-q').forEach(function (q) {
     q.addEventListener('click', function () {

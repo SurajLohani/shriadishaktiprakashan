@@ -1285,6 +1285,29 @@ footer.site-footer {
 .format-body li { font-size: 0.9rem; color: var(--ink-700); padding: 4px 0 4px 22px; position: relative; }
 .format-body li::before { content: "✦"; position: absolute; left: 0; color: var(--flame-600); font-size: 0.8rem; }
 
+/* ---------- Edition (language) selector for purchase blocks ---------- */
+.edition-select { display: flex; gap: 10px; margin: 22px 0 4px; flex-wrap: wrap; }
+.edition-pill {
+  padding: 9px 22px;
+  border-radius: 30px;
+  border: 2px solid rgba(38,6,7,0.15);
+  background: var(--white);
+  color: var(--maroon-800);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: inherit;
+}
+.edition-pill:hover { border-color: var(--flame-600); color: var(--flame-700); }
+.edition-pill.active {
+  background: linear-gradient(135deg, var(--flame-500), var(--flame-600));
+  border-color: transparent;
+  color: var(--white);
+}
+.edition-panel { display: none; }
+.edition-panel.active { display: block; }
+
 /* ---------- Sticky order bar (C3) ---------- */
 .sticky-order {
   position: fixed;
