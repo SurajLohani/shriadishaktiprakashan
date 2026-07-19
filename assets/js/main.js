@@ -123,53 +123,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ---------- Edition (language) selector for purchase blocks ----------
-  document.querySelectorAll('.edition-select').forEach(function (sel) {
-    var block = sel.closest('.edition-block') || sel.parentElement;
-    var pills = sel.querySelectorAll('.edition-pill');
-    var panels = block ? block.querySelectorAll('.edition-panel') : [];
-    pills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        var edition = pill.getAttribute('data-edition');
-        pills.forEach(function (p) { p.classList.toggle('active', p === pill); });
-        panels.forEach(function (panel) {
-          panel.classList.toggle('active', panel.getAttribute('data-edition-panel') === edition);
-        });
-      });
-    });
-    // If the page was opened via an "English edition" link (#english-edition or #combo-english),
-    // pre-select the English pill so the visitor doesn't need an extra click.
-    if (block && (block.id === 'english-edition' || block.id === 'combo-english') &&
-        (window.location.hash === '#english-edition' || window.location.hash === '#combo-english')) {
-      var enPill = sel.querySelector('.edition-pill[data-edition="en"]');
-      if (enPill) enPill.click();
-    }
-  });
-
-  // ---------- FAQ accordion (D1) ----------
-  document.querySelectorAll('.faq-q').forEach(function (q) {
-    q.addEventListener('click', function () {
-      q.closest('.faq-item').classList.toggle('open');
-    });
-  });
-
   // ---------- Sticky order bar on book pages (C3) ----------
-  var bookData = document.body.getAttribute('data-book');
-  if (bookData) {
-    var parts = bookData.split('|'); // name|price|paperbackURL|ebookURL|waURL
+  // Reads data-book (Hindi) and data-book-en (English) from <body> and exposes
+  // window.__sapRenderStickyBar(edition) so the edition selector below can re-render it.
+  var bookDataHi = document.body.getAttribute('data-book');
+  var bookDataEn = document.body.getAttribute('data-book-en');
+  if (bookDataHi) {
     var bar = document.createElement('div');
     bar.className = 'sticky-order';
-    bar.innerHTML =
-      '<div class="sticky-order-inner">' +
-        '<div class="so-name">' + parts[0] + '<small>' + (parts[1] || '') + '</small></div>' +
-        '<div class="so-actions">' +
-          (parts[2] ? '<a class="btn btn-gold" target="_blank" rel="noopener" href="' + parts[2] + '">Paperback ख़रीदें</a>' : '') +
-          (parts[3] ? '<a class="btn btn-outline" target="_blank" rel="noopener" href="' + parts[3] + '">Ebook</a>' : '') +
-          (parts[4] ? '<a class="btn btn-outline" target="_blank" rel="noopener" href="' + parts[4] + '">WhatsApp</a>' : '') +
-        '</div>' +
-      '</div>';
     document.body.appendChild(bar);
     document.body.classList.add('has-sticky-order');
+
+    var renderStickyBar = function (edition) {
+      var raw = (edition === 'en' && bookDataEn) ? bookDataEn : bookDataHi;
+      var parts = raw.split('|'); // name|price|paperbackURL|ebookURL|waURL
+      var pbLabel = edition === 'en' ? 'Paperback' : 'Paperback ख़रीदें';
+      bar.innerHTML =
+        '<div class="sticky-order-inner">' +
+          '<div class="so-name">' + parts[0] + '<small>' + (parts[1] || '') + '</small></div>' +
+          '<div class="so-actions">' +
+            (parts[2] ? '<a class="btn btn-gold" target="_blank" rel="noopener" href="' + parts[2] + '">' + pbLabel + '</a>' : '') +
+            (parts[3] ? '<a class="btn btn-outline" target="_blank" rel="noopener" href="' + parts[3] + '">Ebook</a>' : '') +
+            (parts[4] ? '<a class="btn btn-outline" target="_blank" rel="noopener" href="' + parts[4] + '">WhatsApp</a>' : '') +
+          '</div>' +
+        '</div>';
+    };
+    renderStickyBar('hi');
+    window.__sapRenderStickyBar = renderStickyBar;
+
     var lastShown = false;
     window.addEventListener('scroll', function () {
       var show = window.scrollY > 640 && (window.innerHeight + window.scrollY) < document.body.scrollHeight - 420;
@@ -179,6 +160,53 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }, { passive: true });
   }
+
+  // ---------- Edition (language) selector — global controller ----------
+  // Drives: purchase accordion panels, spec-table panels, sample-chapter link,
+  // book cover image, and the sticky order bar above — all from one set of pills.
+  (function () {
+    var selects = document.querySelectorAll('.edition-select');
+    if (!selects.length) return;
+
+    function setEdition(edition) {
+      document.querySelectorAll('.edition-pill').forEach(function (p) {
+        p.classList.toggle('active', p.getAttribute('data-edition') === edition);
+      });
+      document.querySelectorAll('.edition-panel[data-edition-panel]').forEach(function (panel) {
+        panel.classList.toggle('active', panel.getAttribute('data-edition-panel') === edition);
+      });
+      document.querySelectorAll('img[data-cover-hi]').forEach(function (img) {
+        var src = edition === 'en' ? img.getAttribute('data-cover-en') : img.getAttribute('data-cover-hi');
+        if (src) img.setAttribute('src', src);
+      });
+      document.querySelectorAll('a[data-sample-hi]').forEach(function (a) {
+        var href = edition === 'en' ? a.getAttribute('data-sample-en') : a.getAttribute('data-sample-hi');
+        if (href) a.setAttribute('href', href);
+      });
+      if (window.__sapRenderStickyBar) window.__sapRenderStickyBar(edition);
+    }
+
+    selects.forEach(function (sel) {
+      sel.querySelectorAll('.edition-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          setEdition(pill.getAttribute('data-edition'));
+        });
+      });
+    });
+
+    // If the page was opened via an "English edition" link (#english-edition or #combo-english),
+    // pre-select the English pill so the visitor doesn't need an extra click.
+    if (window.location.hash === '#english-edition' || window.location.hash === '#combo-english') {
+      setEdition('en');
+    }
+  })();
+
+  // ---------- FAQ accordion (D1) ----------
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      q.closest('.faq-item').classList.toggle('open');
+    });
+  });
 
   // ---------- Blog article experience (E1/E2/E3) ----------
   var isBlogArticle = /\/blog\/[^\/]+\.html/.test(window.location.pathname);
