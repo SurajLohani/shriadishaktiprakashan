@@ -1277,6 +1277,8 @@ footer.site-footer {
 .format-head .f-name { font-weight: 800; color: var(--maroon-900); font-size: 1rem; }
 .format-head .f-name small { display: block; font-weight: 600; color: var(--ink-500); font-size: 0.8rem; margin-top: 2px; }
 .format-head .f-price { font-weight: 800; color: var(--flame-700); font-size: 1.3rem; white-space: nowrap; }
+.format-head .f-price .f-ship { display: block; font-weight: 600; color: var(--ink-500); font-size: 0.72rem; text-align: right; white-space: nowrap; }
+.format-head .f-ship-note { display: block; width: 100%; font-weight: 600; color: var(--ink-500); font-size: 0.72rem; text-align: right; white-space: nowrap; margin-top: -4px; }
 .format-head .f-caret { color: var(--ink-500); transition: transform .25s ease; }
 .format-item.open .f-caret { transform: rotate(180deg); }
 .format-body { display: none; padding: 0 20px 20px; }
@@ -1307,6 +1309,10 @@ footer.site-footer {
 }
 .edition-panel { display: none; }
 .edition-panel.active { display: block; }
+
+/* Inline (hero title / lead line) text that swaps with the edition pill */
+[data-edition-panel-inline] { display: none; }
+[data-edition-panel-inline].edition-active { display: inline; }
 
 /* ---------- Sticky order bar (C3) ---------- */
 .sticky-order {

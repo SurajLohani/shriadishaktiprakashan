@@ -183,6 +183,16 @@ document.addEventListener('DOMContentLoaded', function () {
         var href = edition === 'en' ? a.getAttribute('data-sample-en') : a.getAttribute('data-sample-hi');
         if (href) a.setAttribute('href', href);
       });
+      // Hero title word (e.g. "सीतायण" / "Sitayan") — swaps with the edition, independent of UI language.
+      document.querySelectorAll('[data-title-hi]').forEach(function (el) {
+        var txt = edition === 'en' ? el.getAttribute('data-title-en') : el.getAttribute('data-title-hi');
+        if (txt) el.textContent = txt;
+      });
+      // Inline hero stats/pricing line — separate hi/en-edition variants, each still
+      // wrapped in its own data-i18n-hi/en pair so the UI-language toggle keeps working.
+      document.querySelectorAll('[data-edition-panel-inline]').forEach(function (el) {
+        el.classList.toggle('edition-active', el.getAttribute('data-edition-panel-inline') === edition);
+      });
       if (window.__sapRenderStickyBar) window.__sapRenderStickyBar(edition);
     }
 
@@ -195,10 +205,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // If the page was opened via an "English edition" link (#english-edition or #combo-english),
-    // pre-select the English pill so the visitor doesn't need an extra click.
-    if (window.location.hash === '#english-edition' || window.location.hash === '#combo-english') {
-      setEdition('en');
-    }
+    // pre-select the English pill so the visitor doesn't need an extra click. Otherwise, run once
+    // with 'hi' to make sure the new inline title/lead-line elements start in the correct state.
+    var initialEdition = (window.location.hash === '#english-edition' || window.location.hash === '#combo-english') ? 'en' : 'hi';
+    setEdition(initialEdition);
   })();
 
   // ---------- FAQ accordion (D1) ----------
