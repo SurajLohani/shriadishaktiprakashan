@@ -66,6 +66,21 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = 'mailto:surajkumarlohani@gmail.com?subject=' + subject + '&body=' + body;
     });
   }
+
+  // Testimonial form -> mailto (v1, no backend)
+  var tform = document.getElementById('testimonial-submit-form');
+  if (tform) {
+    tform.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('tf-name').value;
+      var email = document.getElementById('tf-email').value;
+      var book = document.getElementById('tf-book').value;
+      var message = document.getElementById('tf-message').value;
+      var subject = encodeURIComponent('Testimonial from ' + name + ' — ' + book);
+      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')\nBook: ' + book);
+      window.location.href = 'mailto:surajkumarlohani@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
 });
 
 /* ============================================================
