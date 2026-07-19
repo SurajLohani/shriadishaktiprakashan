@@ -478,7 +478,7 @@ footer.site-footer {
   border: 1px solid rgba(230,190,111,0.4);
 }
 
-.footer-col h4 {
+.footer-col h3 {
   color: var(--gold-300);
   font-size: 0.95rem;
   margin: 0 0 16px;
@@ -563,7 +563,7 @@ footer.site-footer {
 }
 
 .float-inquiry {
-  background: #25d366;
+  background: #075e54;
   color: var(--white);
 }
 .float-inquiry .float-icon {
